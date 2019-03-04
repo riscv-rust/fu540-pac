@@ -35,7 +35,281 @@
             </registers>
         </peripheral>
         <!-- MSEL -->
-        
+
+        <!-- PRCI -->
+        <peripheral>
+            <name>PRCI</name>
+            <description>PRCI (Power Reset Clocking Interrupt) Block</description>
+            <groupName>PRCI</groupName>
+            <baseAddress>0x10000000</baseAddress>
+            <registers>
+                <register>
+                    <name>hfxosccfg</name>
+                    <description>Crystal Input Control Register</description>
+                    <addressOffset>0x00</addressOffset>
+                    <fields>
+                        <field>
+                            <name>xosc_rdy</name>
+                            <description>Crystal input ready</description>
+                            <bitRange>[29:29]</bitRange>
+                        </field>
+                        <field>
+                            <name>xosccfg_en</name>
+                            <description>Crystal input enable</description>
+                            <bitRange>[30:30]</bitRange>
+                        </field>
+                    </fields>
+                </register>
+
+                <register>
+                    <name>corepllcfg0</name>
+                    <description>Core PLL Configuration Register</description>
+                    <addressOffset>0x04</addressOffset>
+                    <fields>
+                        <field>
+                            <name>divr</name>
+                            <description>PLL reference divider value minus one</description>
+                            <bitRange>[5:0]</bitRange>
+                        </field>
+                        <field>
+                            <name>divf</name>
+                            <description>PLL feedback divider value minus one</description>
+                            <bitRange>[14:6]</bitRange>
+                        </field>
+                        <field>
+                            <name>divq</name>
+                            <description>Log2 of PLL output divider. Valid settings are 1, 2, 3, 4, 5, 6</description>
+                            <bitRange>[17:15]</bitRange>
+                        </field>
+                        <field>
+                            <name>range</name>
+                            <description>PLL filter range. 3'b100 = 33MHz</description>
+                            <bitRange>[20:18]</bitRange>
+                        </field>
+                        <field>
+                            <name>bypass</name>
+                            <description>PLL bypass</description>
+                            <bitRange>[24:24]</bitRange>
+                        </field>
+                        <field>
+                            <name>fse</name>
+                            <description>Internal or external input path. Valid setting is 1, internal feedback.</description>
+                            <bitRange>[25:25]</bitRange>
+                        </field>
+                        <field>
+                            <name>lock</name>
+                            <description>PLL locked</description>
+                            <bitRange>[31:31]</bitRange>
+                        </field>
+                    </fields>
+                </register>
+
+                <register>
+                    <name>ddrpllcfg0</name>
+                    <description>DDR PLL Configuration Register</description>
+                    <addressOffset>0x0c</addressOffset>
+                    <fields>
+                        <field>
+                            <name>divr</name>
+                            <description>PLL reference divider value minus one</description>
+                            <bitRange>[5:0]</bitRange>
+                        </field>
+                        <field>
+                            <name>divf</name>
+                            <description>PLL feedback divider value minus one</description>
+                            <bitRange>[14:6]</bitRange>
+                        </field>
+                        <field>
+                            <name>divq</name>
+                            <description>Log2 of PLL output divider. Valid settings are 1,2,3,4,5,6</description>
+                            <bitRange>[17:15]</bitRange>
+                        </field>
+                        <field>
+                            <name>range</name>
+                            <description>PLL filter range. 3'b100 = 33MHz</description>
+                            <bitRange>[20:18]</bitRange>
+                        </field>
+                        <field>
+                            <name>bypass</name>
+                            <description>PLL bypass</description>
+                            <bitRange>[24:24]</bitRange>
+                        </field>
+                        <field>
+                            <name>fse</name>
+                            <description>Internal or external input path. Valid settings is 1, internal feedback.</description>
+                            <bitRange>[25:25]</bitRange>
+                        </field>
+                        <field>
+                            <name>lock</name>
+                            <description>PLL locked</description>
+                            <bitRange>[31:31]</bitRange>
+                        </field>
+                    </fields>
+                </register>
+
+                <register>
+                    <name>ddrpllcfg1</name>
+                    <description>DDR PLL Configuration Register</description>
+                    <addressOffset>0x10</addressOffset>
+                    <fields>
+                        <field>
+                            <name>cke</name>
+                            <description>PLL clock output enable. Glitch free clock gate after PLL output. 1 enables clock, 0 disables clock</description>
+                            <bitRange>[24:24]</bitRange>
+                        </field>
+                    </fields>
+                </register>
+
+                <register>
+                    <name>gemgxlpllcfg0</name>
+                    <description>Gigabit Ethernet PLL Configuration Register</description>
+                    <addressOffset>0x1c</addressOffset>
+                    <fields>
+                        <field>
+                            <name>divr</name>
+                            <description>PLL reference divider value minus one</description>
+                            <bitRange>[5:0]</bitRange>
+                        </field>
+                        <field>
+                            <name>divf</name>
+                            <description>PLL feedback divider value minus one</description>
+                            <bitRange>[14:6]</bitRange>
+                        </field>
+                        <field>
+                            <name>divq</name>
+                            <description>Log2 of PLL output divider. Valid settings are 1,2,3,4,5,6</description>
+                            <bitRange>[17:15]</bitRange>
+                        </field>
+                        <field>
+                            <name>range</name>
+                            <description>PLL filter range. 3'b100 = 33MHz</description>
+                            <bitRange>[20:18]</bitRange>
+                        </field>
+                        <field>
+                            <name>bypass</name>
+                            <description>PLL bypass</description>
+                            <bitRange>[24:24]</bitRange>
+                        </field>
+                        <field>
+                            <name>fse</name>
+                            <description>Internal or external input path. Valid settings is 1, internal feedback.</description>
+                            <bitRange>[25:25]</bitRange>
+                        </field>
+                        <field>
+                            <name>lock</name>
+                            <description>PLL locked</description>
+                            <bitRange>[31:31]</bitRange>
+                        </field>
+                    </fields>
+                </register>
+
+                <register>
+                    <name>gemgxlpllcfg1</name>
+                    <description>Gigabit Ethernet PLL Configuration Register</description>
+                    <addressOffset>0x20</addressOffset>
+                    <fields>
+                        <field>
+                            <name>cke</name>
+                            <description>PLL clock output enable. Glitch free clock gate after PLL output. 1 enables clock, 0 disables clock</description>
+                            <bitRange>[24:24]</bitRange>
+                        </field>
+                    </fields>
+                </register>
+
+                <register>
+                    <name>coreclksel</name>
+                    <description>CORECLK Source Selection Register</description>
+                    <addressOffset>0x24</addressOffset>
+                    <fields>
+                        <field>
+                            <name>coreclksel</name>
+                            <description>CORECLK select. 0 = CORE_PLL output 1 = HFCLK</description>
+                            <bitRange>[0:0]</bitRange>
+                        </field>
+                    </fields>
+                </register>
+
+                <register>
+                    <name>devicesresetreg</name>
+                    <description>Peripheral Devices Reset Control Register</description>
+                    <addressOffset>0x28</addressOffset>
+                    <fields>
+                        <field>
+                            <name>DDR_CTRL_RST_N</name>
+                            <description>DDR Controller reset (active low)</description>
+                            <bitRange>[0:0]</bitRange>
+                        </field>
+                        <field>
+                            <name>DDR_AXI_RST_N</name>
+                            <description>DDR Controller AXI interface reset (active low)</description>
+                            <bitRange>[1:1]</bitRange>
+                        </field>
+                        <field>
+                            <name>DDR_AHB_RST_N</name>
+                            <description>DDR Controller AHB interface reset (active low)</description>
+                            <bitRange>[2:2]</bitRange>
+                        </field>
+                        <field>
+                            <name>DDR_PHY_RST_N</name>
+                            <description>DDR PHY reset (active low)</description>
+                            <bitRange>[3:3]</bitRange>
+                        </field>
+                        <field>
+                            <name>GEMGXL_RST_N</name>
+                            <description>Gigabit Ethernet Subsystem reset (active low)</description>
+                            <bitRange>[5:5]</bitRange>
+                        </field>
+                    </fields>
+                </register>
+
+                <register>
+                    <name>clkmuxstatus</name>
+                    <description>CLKMUX Status Register</description>
+                    <addressOffset>0x2c</addressOffset>
+                    <fields>
+                        <field>
+                            <name>coreclkpllsel</name>
+                            <bitRange>[0:0]</bitRange>
+                        </field>
+                        <field>
+                            <name>tlclksel</name>
+                            <bitRange>[1:1]</bitRange>
+                        </field>
+                        <field>
+                            <name>rtcxsel</name>
+                            <bitRange>[2:2]</bitRange>
+                        </field>
+                        <field>
+                            <name>ddrctrlclksel</name>
+                            <bitRange>[3:3]</bitRange>
+                        </field>
+                        <field>
+                            <name>ddrphyclksel</name>
+                            <bitRange>[4:4]</bitRange>
+                        </field>
+                        <field>
+                            <name>gemgxlclksel</name>
+                            <bitRange>[6:6]</bitRange>
+                        </field>
+                    </fields>
+                </register>
+
+                <register>
+                    <name>procmoncfg</name>
+                    <description>PROCMON Configuration Register</description>
+                    <addressOffset>0xf0</addressOffset>
+                    <fields>
+                        <field>
+                            <name>coreclksel</name>
+                            <description>Select CORECLK</description>
+                            <bitRange>[24:24]</bitRange>
+                        </field>
+                    </fields>
+                </register>
+            </registers>
+        </peripheral>
+        <!-- PRCI -->
+
         <!-- UART0 -->
         <peripheral>
             <name>UART0</name>
