@@ -170,7 +170,7 @@
                     <resetValue>289</resetValue>
                     <fields>
                         <field>
-                            <name>value</name>
+                            <name>div</name>
                             <description>Baud rate divisor</description>
                             <bitRange>[19:0]</bitRange>
                         </field>
