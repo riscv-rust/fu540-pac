@@ -9,9 +9,7 @@
     <width>64</width>
     <size>32</size>
     <access>read-write</access>
-    <resetValue>0x00000000</resetValue>
-    <resetMask>0xFFFFFFFF</resetMask>
-    
+
     <peripherals>
         <!-- MSEL -->
         <peripheral>
@@ -47,6 +45,8 @@
                     <name>hfxosccfg</name>
                     <description>Crystal Input Control Register</description>
                     <addressOffset>0x00</addressOffset>
+                    <resetValue>0x40000000</resetValue>
+                    <resetMask>0x60000000</resetMask>
                     <fields>
                         <field>
                             <name>xosc_rdy</name>
@@ -65,6 +65,8 @@
                     <name>corepllcfg0</name>
                     <description>Core PLL Configuration Register</description>
                     <addressOffset>0x04</addressOffset>
+                    <resetValue>0x020187c1</resetValue>
+                    <resetMask>0x831fffff</resetMask>
                     <fields>
                         <field>
                             <name>divr</name>
@@ -108,6 +110,8 @@
                     <name>ddrpllcfg0</name>
                     <description>DDR PLL Configuration Register</description>
                     <addressOffset>0x0c</addressOffset>
+                    <resetValue>0x020187c1</resetValue>
+                    <resetMask>0x831fffff</resetMask>
                     <fields>
                         <field>
                             <name>divr</name>
@@ -151,6 +155,8 @@
                     <name>ddrpllcfg1</name>
                     <description>DDR PLL Configuration Register</description>
                     <addressOffset>0x10</addressOffset>
+                    <resetValue>0x00000000</resetValue>
+                    <resetMask>0x01000000</resetMask>
                     <fields>
                         <field>
                             <name>cke</name>
@@ -164,6 +170,8 @@
                     <name>gemgxlpllcfg0</name>
                     <description>Gigabit Ethernet PLL Configuration Register</description>
                     <addressOffset>0x1c</addressOffset>
+                    <resetValue>0x020187c1</resetValue>
+                    <resetMask>0x831fffff</resetMask>
                     <fields>
                         <field>
                             <name>divr</name>
@@ -207,6 +215,8 @@
                     <name>gemgxlpllcfg1</name>
                     <description>Gigabit Ethernet PLL Configuration Register</description>
                     <addressOffset>0x20</addressOffset>
+                    <resetValue>0x00000000</resetValue>
+                    <resetMask>0x01000000</resetMask>
                     <fields>
                         <field>
                             <name>cke</name>
@@ -220,6 +230,8 @@
                     <name>coreclksel</name>
                     <description>CORECLK Source Selection Register</description>
                     <addressOffset>0x24</addressOffset>
+                    <resetValue>0x00000001</resetValue>
+                    <resetMask>0x00000001</resetMask>
                     <fields>
                         <field>
                             <name>coreclksel</name>
@@ -233,6 +245,8 @@
                     <name>devicesresetreg</name>
                     <description>Peripheral Devices Reset Control Register</description>
                     <addressOffset>0x28</addressOffset>
+                    <resetValue>0x00000000</resetValue>
+                    <resetMask>0x0000002f</resetMask>
                     <fields>
                         <field>
                             <name>DDR_CTRL_RST_N</name>
@@ -360,6 +374,8 @@
                     <name>txctrl</name>
                     <description>Transmit Control Register</description>
                     <addressOffset>0x08</addressOffset>
+                    <resetValue>0x00000000</resetValue>
+                    <resetMask>0x00070003</resetMask>
                     <fields>
                         <field>
                             <name>txen</name>
@@ -383,6 +399,8 @@
                     <name>rxctrl</name>
                     <description>Receive Control Register</description>
                     <addressOffset>0x0C</addressOffset>
+                    <resetValue>0x00000000</resetValue>
+                    <resetMask>0x00070001</resetMask>
                     <fields>
                         <field>
                             <name>rxen</name>
@@ -403,6 +421,8 @@
                     <name>ie</name>
                     <description>Interrupt Enable Register</description>
                     <addressOffset>0x10</addressOffset>
+                    <resetValue>0x00000000</resetValue>
+                    <resetMask>0x00000003</resetMask>
                     <fields>
                         <field>
                             <name>txwm</name>
@@ -442,6 +462,7 @@
                     <description>Baud Rate Divisor Register</description>
                     <addressOffset>0x18</addressOffset>
                     <resetValue>289</resetValue>
+                    <resetMask>0x000fffff</resetMask>
                     <fields>
                         <field>
                             <name>div</name>
