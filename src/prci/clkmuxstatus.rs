@@ -1,418 +1,342 @@
-#[doc = r" Value read from the register"]
-pub struct R {
-    bits: u32,
-}
-#[doc = r" Value to write to the register"]
-pub struct W {
-    bits: u32,
-}
-impl super::CLKMUXSTATUS {
-    #[doc = r" Modifies the contents of the register"]
-    #[inline]
-    pub fn modify<F>(&self, f: F)
-    where
-        for<'w> F: FnOnce(&R, &'w mut W) -> &'w mut W,
-    {
-        let bits = self.register.get();
-        let r = R { bits: bits };
-        let mut w = W { bits: bits };
-        f(&r, &mut w);
-        self.register.set(w.bits);
-    }
-    #[doc = r" Reads the contents of the register"]
-    #[inline]
-    pub fn read(&self) -> R {
-        R {
-            bits: self.register.get(),
-        }
-    }
-    #[doc = r" Writes to the register"]
-    #[inline]
-    pub fn write<F>(&self, f: F)
-    where
-        F: FnOnce(&mut W) -> &mut W,
-    {
-        let mut w = W::reset_value();
-        f(&mut w);
-        self.register.set(w.bits);
-    }
-    #[doc = r" Writes the reset value to the register"]
-    #[inline]
-    pub fn reset(&self) {
-        self.write(|w| w)
+#[doc = "Register `clkmuxstatus` reader"]
+pub struct R(crate::R<CLKMUXSTATUS_SPEC>);
+impl core::ops::Deref for R {
+    type Target = crate::R<CLKMUXSTATUS_SPEC>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
     }
 }
-#[doc = r" Value of the field"]
-pub struct CORECLKPLLSELR {
-    bits: bool,
-}
-impl CORECLKPLLSELR {
-    #[doc = r" Value of the field as raw bits"]
-    #[inline]
-    pub fn bit(&self) -> bool {
-        self.bits
-    }
-    #[doc = r" Returns `true` if the bit is clear (0)"]
-    #[inline]
-    pub fn bit_is_clear(&self) -> bool {
-        !self.bit()
-    }
-    #[doc = r" Returns `true` if the bit is set (1)"]
-    #[inline]
-    pub fn bit_is_set(&self) -> bool {
-        self.bit()
+impl From<crate::R<CLKMUXSTATUS_SPEC>> for R {
+    #[inline(always)]
+    fn from(reader: crate::R<CLKMUXSTATUS_SPEC>) -> Self {
+        R(reader)
     }
 }
-#[doc = r" Value of the field"]
-pub struct TLCLKSELR {
-    bits: bool,
-}
-impl TLCLKSELR {
-    #[doc = r" Value of the field as raw bits"]
-    #[inline]
-    pub fn bit(&self) -> bool {
-        self.bits
-    }
-    #[doc = r" Returns `true` if the bit is clear (0)"]
-    #[inline]
-    pub fn bit_is_clear(&self) -> bool {
-        !self.bit()
-    }
-    #[doc = r" Returns `true` if the bit is set (1)"]
-    #[inline]
-    pub fn bit_is_set(&self) -> bool {
-        self.bit()
+#[doc = "Register `clkmuxstatus` writer"]
+pub struct W(crate::W<CLKMUXSTATUS_SPEC>);
+impl core::ops::Deref for W {
+    type Target = crate::W<CLKMUXSTATUS_SPEC>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
     }
 }
-#[doc = r" Value of the field"]
-pub struct RTCXSELR {
-    bits: bool,
-}
-impl RTCXSELR {
-    #[doc = r" Value of the field as raw bits"]
-    #[inline]
-    pub fn bit(&self) -> bool {
-        self.bits
-    }
-    #[doc = r" Returns `true` if the bit is clear (0)"]
-    #[inline]
-    pub fn bit_is_clear(&self) -> bool {
-        !self.bit()
-    }
-    #[doc = r" Returns `true` if the bit is set (1)"]
-    #[inline]
-    pub fn bit_is_set(&self) -> bool {
-        self.bit()
+impl core::ops::DerefMut for W {
+    #[inline(always)]
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.0
     }
 }
-#[doc = r" Value of the field"]
-pub struct DDRCTRLCLKSELR {
-    bits: bool,
-}
-impl DDRCTRLCLKSELR {
-    #[doc = r" Value of the field as raw bits"]
-    #[inline]
-    pub fn bit(&self) -> bool {
-        self.bits
-    }
-    #[doc = r" Returns `true` if the bit is clear (0)"]
-    #[inline]
-    pub fn bit_is_clear(&self) -> bool {
-        !self.bit()
-    }
-    #[doc = r" Returns `true` if the bit is set (1)"]
-    #[inline]
-    pub fn bit_is_set(&self) -> bool {
-        self.bit()
+impl From<crate::W<CLKMUXSTATUS_SPEC>> for W {
+    #[inline(always)]
+    fn from(writer: crate::W<CLKMUXSTATUS_SPEC>) -> Self {
+        W(writer)
     }
 }
-#[doc = r" Value of the field"]
-pub struct DDRPHYCLKSELR {
-    bits: bool,
-}
-impl DDRPHYCLKSELR {
-    #[doc = r" Value of the field as raw bits"]
-    #[inline]
-    pub fn bit(&self) -> bool {
-        self.bits
-    }
-    #[doc = r" Returns `true` if the bit is clear (0)"]
-    #[inline]
-    pub fn bit_is_clear(&self) -> bool {
-        !self.bit()
-    }
-    #[doc = r" Returns `true` if the bit is set (1)"]
-    #[inline]
-    pub fn bit_is_set(&self) -> bool {
-        self.bit()
+#[doc = "Field `coreclkpllsel` reader - "]
+pub struct CORECLKPLLSEL_R(crate::FieldReader<bool, bool>);
+impl CORECLKPLLSEL_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        CORECLKPLLSEL_R(crate::FieldReader::new(bits))
     }
 }
-#[doc = r" Value of the field"]
-pub struct GEMGXLCLKSELR {
-    bits: bool,
-}
-impl GEMGXLCLKSELR {
-    #[doc = r" Value of the field as raw bits"]
-    #[inline]
-    pub fn bit(&self) -> bool {
-        self.bits
-    }
-    #[doc = r" Returns `true` if the bit is clear (0)"]
-    #[inline]
-    pub fn bit_is_clear(&self) -> bool {
-        !self.bit()
-    }
-    #[doc = r" Returns `true` if the bit is set (1)"]
-    #[inline]
-    pub fn bit_is_set(&self) -> bool {
-        self.bit()
+impl core::ops::Deref for CORECLKPLLSEL_R {
+    type Target = crate::FieldReader<bool, bool>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
     }
 }
-#[doc = r" Proxy"]
-pub struct _CORECLKPLLSELW<'a> {
+#[doc = "Field `coreclkpllsel` writer - "]
+pub struct CORECLKPLLSEL_W<'a> {
     w: &'a mut W,
 }
-impl<'a> _CORECLKPLLSELW<'a> {
-    #[doc = r" Sets the field bit"]
+impl<'a> CORECLKPLLSEL_W<'a> {
+    #[doc = r"Sets the field bit"]
+    #[inline(always)]
     pub fn set_bit(self) -> &'a mut W {
         self.bit(true)
     }
-    #[doc = r" Clears the field bit"]
+    #[doc = r"Clears the field bit"]
+    #[inline(always)]
     pub fn clear_bit(self) -> &'a mut W {
         self.bit(false)
     }
-    #[doc = r" Writes raw bits to the field"]
-    #[inline]
+    #[doc = r"Writes raw bits to the field"]
+    #[inline(always)]
     pub fn bit(self, value: bool) -> &'a mut W {
-        const MASK: bool = true;
-        const OFFSET: u8 = 0;
-        self.w.bits &= !((MASK as u32) << OFFSET);
-        self.w.bits |= ((value & MASK) as u32) << OFFSET;
+        self.w.bits = (self.w.bits & !0x01) | (value as u32 & 0x01);
         self.w
     }
 }
-#[doc = r" Proxy"]
-pub struct _TLCLKSELW<'a> {
+#[doc = "Field `tlclksel` reader - "]
+pub struct TLCLKSEL_R(crate::FieldReader<bool, bool>);
+impl TLCLKSEL_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        TLCLKSEL_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for TLCLKSEL_R {
+    type Target = crate::FieldReader<bool, bool>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `tlclksel` writer - "]
+pub struct TLCLKSEL_W<'a> {
     w: &'a mut W,
 }
-impl<'a> _TLCLKSELW<'a> {
-    #[doc = r" Sets the field bit"]
+impl<'a> TLCLKSEL_W<'a> {
+    #[doc = r"Sets the field bit"]
+    #[inline(always)]
     pub fn set_bit(self) -> &'a mut W {
         self.bit(true)
     }
-    #[doc = r" Clears the field bit"]
+    #[doc = r"Clears the field bit"]
+    #[inline(always)]
     pub fn clear_bit(self) -> &'a mut W {
         self.bit(false)
     }
-    #[doc = r" Writes raw bits to the field"]
-    #[inline]
+    #[doc = r"Writes raw bits to the field"]
+    #[inline(always)]
     pub fn bit(self, value: bool) -> &'a mut W {
-        const MASK: bool = true;
-        const OFFSET: u8 = 1;
-        self.w.bits &= !((MASK as u32) << OFFSET);
-        self.w.bits |= ((value & MASK) as u32) << OFFSET;
+        self.w.bits = (self.w.bits & !(0x01 << 1)) | ((value as u32 & 0x01) << 1);
         self.w
     }
 }
-#[doc = r" Proxy"]
-pub struct _RTCXSELW<'a> {
+#[doc = "Field `rtcxsel` reader - "]
+pub struct RTCXSEL_R(crate::FieldReader<bool, bool>);
+impl RTCXSEL_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        RTCXSEL_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for RTCXSEL_R {
+    type Target = crate::FieldReader<bool, bool>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `rtcxsel` writer - "]
+pub struct RTCXSEL_W<'a> {
     w: &'a mut W,
 }
-impl<'a> _RTCXSELW<'a> {
-    #[doc = r" Sets the field bit"]
+impl<'a> RTCXSEL_W<'a> {
+    #[doc = r"Sets the field bit"]
+    #[inline(always)]
     pub fn set_bit(self) -> &'a mut W {
         self.bit(true)
     }
-    #[doc = r" Clears the field bit"]
+    #[doc = r"Clears the field bit"]
+    #[inline(always)]
     pub fn clear_bit(self) -> &'a mut W {
         self.bit(false)
     }
-    #[doc = r" Writes raw bits to the field"]
-    #[inline]
+    #[doc = r"Writes raw bits to the field"]
+    #[inline(always)]
     pub fn bit(self, value: bool) -> &'a mut W {
-        const MASK: bool = true;
-        const OFFSET: u8 = 2;
-        self.w.bits &= !((MASK as u32) << OFFSET);
-        self.w.bits |= ((value & MASK) as u32) << OFFSET;
+        self.w.bits = (self.w.bits & !(0x01 << 2)) | ((value as u32 & 0x01) << 2);
         self.w
     }
 }
-#[doc = r" Proxy"]
-pub struct _DDRCTRLCLKSELW<'a> {
+#[doc = "Field `ddrctrlclksel` reader - "]
+pub struct DDRCTRLCLKSEL_R(crate::FieldReader<bool, bool>);
+impl DDRCTRLCLKSEL_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        DDRCTRLCLKSEL_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for DDRCTRLCLKSEL_R {
+    type Target = crate::FieldReader<bool, bool>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `ddrctrlclksel` writer - "]
+pub struct DDRCTRLCLKSEL_W<'a> {
     w: &'a mut W,
 }
-impl<'a> _DDRCTRLCLKSELW<'a> {
-    #[doc = r" Sets the field bit"]
+impl<'a> DDRCTRLCLKSEL_W<'a> {
+    #[doc = r"Sets the field bit"]
+    #[inline(always)]
     pub fn set_bit(self) -> &'a mut W {
         self.bit(true)
     }
-    #[doc = r" Clears the field bit"]
+    #[doc = r"Clears the field bit"]
+    #[inline(always)]
     pub fn clear_bit(self) -> &'a mut W {
         self.bit(false)
     }
-    #[doc = r" Writes raw bits to the field"]
-    #[inline]
+    #[doc = r"Writes raw bits to the field"]
+    #[inline(always)]
     pub fn bit(self, value: bool) -> &'a mut W {
-        const MASK: bool = true;
-        const OFFSET: u8 = 3;
-        self.w.bits &= !((MASK as u32) << OFFSET);
-        self.w.bits |= ((value & MASK) as u32) << OFFSET;
+        self.w.bits = (self.w.bits & !(0x01 << 3)) | ((value as u32 & 0x01) << 3);
         self.w
     }
 }
-#[doc = r" Proxy"]
-pub struct _DDRPHYCLKSELW<'a> {
+#[doc = "Field `ddrphyclksel` reader - "]
+pub struct DDRPHYCLKSEL_R(crate::FieldReader<bool, bool>);
+impl DDRPHYCLKSEL_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        DDRPHYCLKSEL_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for DDRPHYCLKSEL_R {
+    type Target = crate::FieldReader<bool, bool>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `ddrphyclksel` writer - "]
+pub struct DDRPHYCLKSEL_W<'a> {
     w: &'a mut W,
 }
-impl<'a> _DDRPHYCLKSELW<'a> {
-    #[doc = r" Sets the field bit"]
+impl<'a> DDRPHYCLKSEL_W<'a> {
+    #[doc = r"Sets the field bit"]
+    #[inline(always)]
     pub fn set_bit(self) -> &'a mut W {
         self.bit(true)
     }
-    #[doc = r" Clears the field bit"]
+    #[doc = r"Clears the field bit"]
+    #[inline(always)]
     pub fn clear_bit(self) -> &'a mut W {
         self.bit(false)
     }
-    #[doc = r" Writes raw bits to the field"]
-    #[inline]
+    #[doc = r"Writes raw bits to the field"]
+    #[inline(always)]
     pub fn bit(self, value: bool) -> &'a mut W {
-        const MASK: bool = true;
-        const OFFSET: u8 = 4;
-        self.w.bits &= !((MASK as u32) << OFFSET);
-        self.w.bits |= ((value & MASK) as u32) << OFFSET;
+        self.w.bits = (self.w.bits & !(0x01 << 4)) | ((value as u32 & 0x01) << 4);
         self.w
     }
 }
-#[doc = r" Proxy"]
-pub struct _GEMGXLCLKSELW<'a> {
+#[doc = "Field `gemgxlclksel` reader - "]
+pub struct GEMGXLCLKSEL_R(crate::FieldReader<bool, bool>);
+impl GEMGXLCLKSEL_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        GEMGXLCLKSEL_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for GEMGXLCLKSEL_R {
+    type Target = crate::FieldReader<bool, bool>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `gemgxlclksel` writer - "]
+pub struct GEMGXLCLKSEL_W<'a> {
     w: &'a mut W,
 }
-impl<'a> _GEMGXLCLKSELW<'a> {
-    #[doc = r" Sets the field bit"]
+impl<'a> GEMGXLCLKSEL_W<'a> {
+    #[doc = r"Sets the field bit"]
+    #[inline(always)]
     pub fn set_bit(self) -> &'a mut W {
         self.bit(true)
     }
-    #[doc = r" Clears the field bit"]
+    #[doc = r"Clears the field bit"]
+    #[inline(always)]
     pub fn clear_bit(self) -> &'a mut W {
         self.bit(false)
     }
-    #[doc = r" Writes raw bits to the field"]
-    #[inline]
+    #[doc = r"Writes raw bits to the field"]
+    #[inline(always)]
     pub fn bit(self, value: bool) -> &'a mut W {
-        const MASK: bool = true;
-        const OFFSET: u8 = 6;
-        self.w.bits &= !((MASK as u32) << OFFSET);
-        self.w.bits |= ((value & MASK) as u32) << OFFSET;
+        self.w.bits = (self.w.bits & !(0x01 << 6)) | ((value as u32 & 0x01) << 6);
         self.w
     }
 }
 impl R {
-    #[doc = r" Value of the register as raw bits"]
-    #[inline]
-    pub fn bits(&self) -> u32 {
-        self.bits
-    }
     #[doc = "Bit 0"]
-    #[inline]
-    pub fn coreclkpllsel(&self) -> CORECLKPLLSELR {
-        let bits = {
-            const MASK: bool = true;
-            const OFFSET: u8 = 0;
-            ((self.bits >> OFFSET) & MASK as u32) != 0
-        };
-        CORECLKPLLSELR { bits }
+    #[inline(always)]
+    pub fn coreclkpllsel(&self) -> CORECLKPLLSEL_R {
+        CORECLKPLLSEL_R::new((self.bits & 0x01) != 0)
     }
     #[doc = "Bit 1"]
-    #[inline]
-    pub fn tlclksel(&self) -> TLCLKSELR {
-        let bits = {
-            const MASK: bool = true;
-            const OFFSET: u8 = 1;
-            ((self.bits >> OFFSET) & MASK as u32) != 0
-        };
-        TLCLKSELR { bits }
+    #[inline(always)]
+    pub fn tlclksel(&self) -> TLCLKSEL_R {
+        TLCLKSEL_R::new(((self.bits >> 1) & 0x01) != 0)
     }
     #[doc = "Bit 2"]
-    #[inline]
-    pub fn rtcxsel(&self) -> RTCXSELR {
-        let bits = {
-            const MASK: bool = true;
-            const OFFSET: u8 = 2;
-            ((self.bits >> OFFSET) & MASK as u32) != 0
-        };
-        RTCXSELR { bits }
+    #[inline(always)]
+    pub fn rtcxsel(&self) -> RTCXSEL_R {
+        RTCXSEL_R::new(((self.bits >> 2) & 0x01) != 0)
     }
     #[doc = "Bit 3"]
-    #[inline]
-    pub fn ddrctrlclksel(&self) -> DDRCTRLCLKSELR {
-        let bits = {
-            const MASK: bool = true;
-            const OFFSET: u8 = 3;
-            ((self.bits >> OFFSET) & MASK as u32) != 0
-        };
-        DDRCTRLCLKSELR { bits }
+    #[inline(always)]
+    pub fn ddrctrlclksel(&self) -> DDRCTRLCLKSEL_R {
+        DDRCTRLCLKSEL_R::new(((self.bits >> 3) & 0x01) != 0)
     }
     #[doc = "Bit 4"]
-    #[inline]
-    pub fn ddrphyclksel(&self) -> DDRPHYCLKSELR {
-        let bits = {
-            const MASK: bool = true;
-            const OFFSET: u8 = 4;
-            ((self.bits >> OFFSET) & MASK as u32) != 0
-        };
-        DDRPHYCLKSELR { bits }
+    #[inline(always)]
+    pub fn ddrphyclksel(&self) -> DDRPHYCLKSEL_R {
+        DDRPHYCLKSEL_R::new(((self.bits >> 4) & 0x01) != 0)
     }
     #[doc = "Bit 6"]
-    #[inline]
-    pub fn gemgxlclksel(&self) -> GEMGXLCLKSELR {
-        let bits = {
-            const MASK: bool = true;
-            const OFFSET: u8 = 6;
-            ((self.bits >> OFFSET) & MASK as u32) != 0
-        };
-        GEMGXLCLKSELR { bits }
+    #[inline(always)]
+    pub fn gemgxlclksel(&self) -> GEMGXLCLKSEL_R {
+        GEMGXLCLKSEL_R::new(((self.bits >> 6) & 0x01) != 0)
     }
 }
 impl W {
-    #[doc = r" Reset value of the register"]
-    #[inline]
-    pub fn reset_value() -> W {
-        W { bits: 0 }
-    }
-    #[doc = r" Writes raw bits to the register"]
-    #[inline]
-    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
-        self.bits = bits;
-        self
-    }
     #[doc = "Bit 0"]
-    #[inline]
-    pub fn coreclkpllsel(&mut self) -> _CORECLKPLLSELW {
-        _CORECLKPLLSELW { w: self }
+    #[inline(always)]
+    pub fn coreclkpllsel(&mut self) -> CORECLKPLLSEL_W {
+        CORECLKPLLSEL_W { w: self }
     }
     #[doc = "Bit 1"]
-    #[inline]
-    pub fn tlclksel(&mut self) -> _TLCLKSELW {
-        _TLCLKSELW { w: self }
+    #[inline(always)]
+    pub fn tlclksel(&mut self) -> TLCLKSEL_W {
+        TLCLKSEL_W { w: self }
     }
     #[doc = "Bit 2"]
-    #[inline]
-    pub fn rtcxsel(&mut self) -> _RTCXSELW {
-        _RTCXSELW { w: self }
+    #[inline(always)]
+    pub fn rtcxsel(&mut self) -> RTCXSEL_W {
+        RTCXSEL_W { w: self }
     }
     #[doc = "Bit 3"]
-    #[inline]
-    pub fn ddrctrlclksel(&mut self) -> _DDRCTRLCLKSELW {
-        _DDRCTRLCLKSELW { w: self }
+    #[inline(always)]
+    pub fn ddrctrlclksel(&mut self) -> DDRCTRLCLKSEL_W {
+        DDRCTRLCLKSEL_W { w: self }
     }
     #[doc = "Bit 4"]
-    #[inline]
-    pub fn ddrphyclksel(&mut self) -> _DDRPHYCLKSELW {
-        _DDRPHYCLKSELW { w: self }
+    #[inline(always)]
+    pub fn ddrphyclksel(&mut self) -> DDRPHYCLKSEL_W {
+        DDRPHYCLKSEL_W { w: self }
     }
     #[doc = "Bit 6"]
-    #[inline]
-    pub fn gemgxlclksel(&mut self) -> _GEMGXLCLKSELW {
-        _GEMGXLCLKSELW { w: self }
+    #[inline(always)]
+    pub fn gemgxlclksel(&mut self) -> GEMGXLCLKSEL_W {
+        GEMGXLCLKSEL_W { w: self }
+    }
+    #[doc = "Writes raw bits to the register."]
+    #[inline(always)]
+    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
+        self.0.bits(bits);
+        self
+    }
+}
+#[doc = "CLKMUX Status Register\n\nThis register you can [`read`](crate::generic::Reg::read), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [clkmuxstatus](index.html) module"]
+pub struct CLKMUXSTATUS_SPEC;
+impl crate::RegisterSpec for CLKMUXSTATUS_SPEC {
+    type Ux = u32;
+}
+#[doc = "`read()` method returns [clkmuxstatus::R](R) reader structure"]
+impl crate::Readable for CLKMUXSTATUS_SPEC {
+    type Reader = R;
+}
+#[doc = "`write(|w| ..)` method takes [clkmuxstatus::W](W) writer structure"]
+impl crate::Writable for CLKMUXSTATUS_SPEC {
+    type Writer = W;
+}
+#[doc = "`reset()` method sets clkmuxstatus to value 0"]
+impl crate::Resettable for CLKMUXSTATUS_SPEC {
+    #[inline(always)]
+    fn reset_value() -> Self::Ux {
+        0
     }
 }

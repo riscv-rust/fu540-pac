@@ -29,7 +29,7 @@ jobs:
       - name: Install Rust targets
         run: rustup target install --toolchain=${{ matrix.rust }} riscv64imac-unknown-none-elf
       - name: Build crate for riscv64imac-unknown-none-elf
-        run: cargo build --target riscv64imac-unknown-none-elf --features rt
+        run: cargo build --target riscv64imac-unknown-none-elf
 
   # On macOS and Windows, we at least make sure that the crate builds and links.
   build-other:
@@ -50,4 +50,4 @@ jobs:
       - name: Install Rust targets
         run: rustup target install riscv64imac-unknown-none-elf
       - name: Build crate for riscv64imac-unknown-none-elf
-        run: cargo build --target riscv64imac-unknown-none-elf --features rt
+        run: cargo build --target riscv64imac-unknown-none-elf

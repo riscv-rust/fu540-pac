@@ -1,405 +1,348 @@
-#[doc = r" Value read from the register"]
-pub struct R {
-    bits: u32,
-}
-#[doc = r" Value to write to the register"]
-pub struct W {
-    bits: u32,
-}
-impl super::DDRPLLCFG0 {
-    #[doc = r" Modifies the contents of the register"]
-    #[inline]
-    pub fn modify<F>(&self, f: F)
-    where
-        for<'w> F: FnOnce(&R, &'w mut W) -> &'w mut W,
-    {
-        let bits = self.register.get();
-        let r = R { bits: bits };
-        let mut w = W { bits: bits };
-        f(&r, &mut w);
-        self.register.set(w.bits);
-    }
-    #[doc = r" Reads the contents of the register"]
-    #[inline]
-    pub fn read(&self) -> R {
-        R {
-            bits: self.register.get(),
-        }
-    }
-    #[doc = r" Writes to the register"]
-    #[inline]
-    pub fn write<F>(&self, f: F)
-    where
-        F: FnOnce(&mut W) -> &mut W,
-    {
-        let mut w = W::reset_value();
-        f(&mut w);
-        self.register.set(w.bits);
-    }
-    #[doc = r" Writes the reset value to the register"]
-    #[inline]
-    pub fn reset(&self) {
-        self.write(|w| w)
+#[doc = "Register `ddrpllcfg0` reader"]
+pub struct R(crate::R<DDRPLLCFG0_SPEC>);
+impl core::ops::Deref for R {
+    type Target = crate::R<DDRPLLCFG0_SPEC>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
     }
 }
-#[doc = r" Value of the field"]
-pub struct DIVRR {
-    bits: u8,
-}
-impl DIVRR {
-    #[doc = r" Value of the field as raw bits"]
-    #[inline]
-    pub fn bits(&self) -> u8 {
-        self.bits
+impl From<crate::R<DDRPLLCFG0_SPEC>> for R {
+    #[inline(always)]
+    fn from(reader: crate::R<DDRPLLCFG0_SPEC>) -> Self {
+        R(reader)
     }
 }
-#[doc = r" Value of the field"]
-pub struct DIVFR {
-    bits: u16,
-}
-impl DIVFR {
-    #[doc = r" Value of the field as raw bits"]
-    #[inline]
-    pub fn bits(&self) -> u16 {
-        self.bits
+#[doc = "Register `ddrpllcfg0` writer"]
+pub struct W(crate::W<DDRPLLCFG0_SPEC>);
+impl core::ops::Deref for W {
+    type Target = crate::W<DDRPLLCFG0_SPEC>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
     }
 }
-#[doc = r" Value of the field"]
-pub struct DIVQR {
-    bits: u8,
-}
-impl DIVQR {
-    #[doc = r" Value of the field as raw bits"]
-    #[inline]
-    pub fn bits(&self) -> u8 {
-        self.bits
+impl core::ops::DerefMut for W {
+    #[inline(always)]
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.0
     }
 }
-#[doc = r" Value of the field"]
-pub struct RANGER {
-    bits: u8,
-}
-impl RANGER {
-    #[doc = r" Value of the field as raw bits"]
-    #[inline]
-    pub fn bits(&self) -> u8 {
-        self.bits
+impl From<crate::W<DDRPLLCFG0_SPEC>> for W {
+    #[inline(always)]
+    fn from(writer: crate::W<DDRPLLCFG0_SPEC>) -> Self {
+        W(writer)
     }
 }
-#[doc = r" Value of the field"]
-pub struct BYPASSR {
-    bits: bool,
-}
-impl BYPASSR {
-    #[doc = r" Value of the field as raw bits"]
-    #[inline]
-    pub fn bit(&self) -> bool {
-        self.bits
-    }
-    #[doc = r" Returns `true` if the bit is clear (0)"]
-    #[inline]
-    pub fn bit_is_clear(&self) -> bool {
-        !self.bit()
-    }
-    #[doc = r" Returns `true` if the bit is set (1)"]
-    #[inline]
-    pub fn bit_is_set(&self) -> bool {
-        self.bit()
+#[doc = "Field `divr` reader - PLL reference divider value minus one"]
+pub struct DIVR_R(crate::FieldReader<u8, u8>);
+impl DIVR_R {
+    pub(crate) fn new(bits: u8) -> Self {
+        DIVR_R(crate::FieldReader::new(bits))
     }
 }
-#[doc = r" Value of the field"]
-pub struct FSER {
-    bits: bool,
-}
-impl FSER {
-    #[doc = r" Value of the field as raw bits"]
-    #[inline]
-    pub fn bit(&self) -> bool {
-        self.bits
-    }
-    #[doc = r" Returns `true` if the bit is clear (0)"]
-    #[inline]
-    pub fn bit_is_clear(&self) -> bool {
-        !self.bit()
-    }
-    #[doc = r" Returns `true` if the bit is set (1)"]
-    #[inline]
-    pub fn bit_is_set(&self) -> bool {
-        self.bit()
+impl core::ops::Deref for DIVR_R {
+    type Target = crate::FieldReader<u8, u8>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
     }
 }
-#[doc = r" Value of the field"]
-pub struct LOCKR {
-    bits: bool,
-}
-impl LOCKR {
-    #[doc = r" Value of the field as raw bits"]
-    #[inline]
-    pub fn bit(&self) -> bool {
-        self.bits
-    }
-    #[doc = r" Returns `true` if the bit is clear (0)"]
-    #[inline]
-    pub fn bit_is_clear(&self) -> bool {
-        !self.bit()
-    }
-    #[doc = r" Returns `true` if the bit is set (1)"]
-    #[inline]
-    pub fn bit_is_set(&self) -> bool {
-        self.bit()
-    }
-}
-#[doc = r" Proxy"]
-pub struct _DIVRW<'a> {
+#[doc = "Field `divr` writer - PLL reference divider value minus one"]
+pub struct DIVR_W<'a> {
     w: &'a mut W,
 }
-impl<'a> _DIVRW<'a> {
-    #[doc = r" Writes raw bits to the field"]
-    #[inline]
+impl<'a> DIVR_W<'a> {
+    #[doc = r"Writes raw bits to the field"]
+    #[inline(always)]
     pub unsafe fn bits(self, value: u8) -> &'a mut W {
-        const MASK: u8 = 63;
-        const OFFSET: u8 = 0;
-        self.w.bits &= !((MASK as u32) << OFFSET);
-        self.w.bits |= ((value & MASK) as u32) << OFFSET;
+        self.w.bits = (self.w.bits & !0x3f) | (value as u32 & 0x3f);
         self.w
     }
 }
-#[doc = r" Proxy"]
-pub struct _DIVFW<'a> {
+#[doc = "Field `divf` reader - PLL feedback divider value minus one"]
+pub struct DIVF_R(crate::FieldReader<u16, u16>);
+impl DIVF_R {
+    pub(crate) fn new(bits: u16) -> Self {
+        DIVF_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for DIVF_R {
+    type Target = crate::FieldReader<u16, u16>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `divf` writer - PLL feedback divider value minus one"]
+pub struct DIVF_W<'a> {
     w: &'a mut W,
 }
-impl<'a> _DIVFW<'a> {
-    #[doc = r" Writes raw bits to the field"]
-    #[inline]
+impl<'a> DIVF_W<'a> {
+    #[doc = r"Writes raw bits to the field"]
+    #[inline(always)]
     pub unsafe fn bits(self, value: u16) -> &'a mut W {
-        const MASK: u16 = 511;
-        const OFFSET: u8 = 6;
-        self.w.bits &= !((MASK as u32) << OFFSET);
-        self.w.bits |= ((value & MASK) as u32) << OFFSET;
+        self.w.bits = (self.w.bits & !(0x01ff << 6)) | ((value as u32 & 0x01ff) << 6);
         self.w
     }
 }
-#[doc = r" Proxy"]
-pub struct _DIVQW<'a> {
+#[doc = "Field `divq` reader - Log2 of PLL output divider. Valid settings are 1,2,3,4,5,6"]
+pub struct DIVQ_R(crate::FieldReader<u8, u8>);
+impl DIVQ_R {
+    pub(crate) fn new(bits: u8) -> Self {
+        DIVQ_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for DIVQ_R {
+    type Target = crate::FieldReader<u8, u8>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `divq` writer - Log2 of PLL output divider. Valid settings are 1,2,3,4,5,6"]
+pub struct DIVQ_W<'a> {
     w: &'a mut W,
 }
-impl<'a> _DIVQW<'a> {
-    #[doc = r" Writes raw bits to the field"]
-    #[inline]
+impl<'a> DIVQ_W<'a> {
+    #[doc = r"Writes raw bits to the field"]
+    #[inline(always)]
     pub unsafe fn bits(self, value: u8) -> &'a mut W {
-        const MASK: u8 = 7;
-        const OFFSET: u8 = 15;
-        self.w.bits &= !((MASK as u32) << OFFSET);
-        self.w.bits |= ((value & MASK) as u32) << OFFSET;
+        self.w.bits = (self.w.bits & !(0x07 << 15)) | ((value as u32 & 0x07) << 15);
         self.w
     }
 }
-#[doc = r" Proxy"]
-pub struct _RANGEW<'a> {
+#[doc = "Field `range` reader - PLL filter range. 3'b100 = 33MHz"]
+pub struct RANGE_R(crate::FieldReader<u8, u8>);
+impl RANGE_R {
+    pub(crate) fn new(bits: u8) -> Self {
+        RANGE_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for RANGE_R {
+    type Target = crate::FieldReader<u8, u8>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `range` writer - PLL filter range. 3'b100 = 33MHz"]
+pub struct RANGE_W<'a> {
     w: &'a mut W,
 }
-impl<'a> _RANGEW<'a> {
-    #[doc = r" Writes raw bits to the field"]
-    #[inline]
+impl<'a> RANGE_W<'a> {
+    #[doc = r"Writes raw bits to the field"]
+    #[inline(always)]
     pub unsafe fn bits(self, value: u8) -> &'a mut W {
-        const MASK: u8 = 7;
-        const OFFSET: u8 = 18;
-        self.w.bits &= !((MASK as u32) << OFFSET);
-        self.w.bits |= ((value & MASK) as u32) << OFFSET;
+        self.w.bits = (self.w.bits & !(0x07 << 18)) | ((value as u32 & 0x07) << 18);
         self.w
     }
 }
-#[doc = r" Proxy"]
-pub struct _BYPASSW<'a> {
+#[doc = "Field `bypass` reader - PLL bypass"]
+pub struct BYPASS_R(crate::FieldReader<bool, bool>);
+impl BYPASS_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        BYPASS_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for BYPASS_R {
+    type Target = crate::FieldReader<bool, bool>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `bypass` writer - PLL bypass"]
+pub struct BYPASS_W<'a> {
     w: &'a mut W,
 }
-impl<'a> _BYPASSW<'a> {
-    #[doc = r" Sets the field bit"]
+impl<'a> BYPASS_W<'a> {
+    #[doc = r"Sets the field bit"]
+    #[inline(always)]
     pub fn set_bit(self) -> &'a mut W {
         self.bit(true)
     }
-    #[doc = r" Clears the field bit"]
+    #[doc = r"Clears the field bit"]
+    #[inline(always)]
     pub fn clear_bit(self) -> &'a mut W {
         self.bit(false)
     }
-    #[doc = r" Writes raw bits to the field"]
-    #[inline]
+    #[doc = r"Writes raw bits to the field"]
+    #[inline(always)]
     pub fn bit(self, value: bool) -> &'a mut W {
-        const MASK: bool = true;
-        const OFFSET: u8 = 24;
-        self.w.bits &= !((MASK as u32) << OFFSET);
-        self.w.bits |= ((value & MASK) as u32) << OFFSET;
+        self.w.bits = (self.w.bits & !(0x01 << 24)) | ((value as u32 & 0x01) << 24);
         self.w
     }
 }
-#[doc = r" Proxy"]
-pub struct _FSEW<'a> {
+#[doc = "Field `fse` reader - Internal or external input path. Valid settings is 1, internal feedback."]
+pub struct FSE_R(crate::FieldReader<bool, bool>);
+impl FSE_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        FSE_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for FSE_R {
+    type Target = crate::FieldReader<bool, bool>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `fse` writer - Internal or external input path. Valid settings is 1, internal feedback."]
+pub struct FSE_W<'a> {
     w: &'a mut W,
 }
-impl<'a> _FSEW<'a> {
-    #[doc = r" Sets the field bit"]
+impl<'a> FSE_W<'a> {
+    #[doc = r"Sets the field bit"]
+    #[inline(always)]
     pub fn set_bit(self) -> &'a mut W {
         self.bit(true)
     }
-    #[doc = r" Clears the field bit"]
+    #[doc = r"Clears the field bit"]
+    #[inline(always)]
     pub fn clear_bit(self) -> &'a mut W {
         self.bit(false)
     }
-    #[doc = r" Writes raw bits to the field"]
-    #[inline]
+    #[doc = r"Writes raw bits to the field"]
+    #[inline(always)]
     pub fn bit(self, value: bool) -> &'a mut W {
-        const MASK: bool = true;
-        const OFFSET: u8 = 25;
-        self.w.bits &= !((MASK as u32) << OFFSET);
-        self.w.bits |= ((value & MASK) as u32) << OFFSET;
+        self.w.bits = (self.w.bits & !(0x01 << 25)) | ((value as u32 & 0x01) << 25);
         self.w
     }
 }
-#[doc = r" Proxy"]
-pub struct _LOCKW<'a> {
+#[doc = "Field `lock` reader - PLL locked"]
+pub struct LOCK_R(crate::FieldReader<bool, bool>);
+impl LOCK_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        LOCK_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for LOCK_R {
+    type Target = crate::FieldReader<bool, bool>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `lock` writer - PLL locked"]
+pub struct LOCK_W<'a> {
     w: &'a mut W,
 }
-impl<'a> _LOCKW<'a> {
-    #[doc = r" Sets the field bit"]
+impl<'a> LOCK_W<'a> {
+    #[doc = r"Sets the field bit"]
+    #[inline(always)]
     pub fn set_bit(self) -> &'a mut W {
         self.bit(true)
     }
-    #[doc = r" Clears the field bit"]
+    #[doc = r"Clears the field bit"]
+    #[inline(always)]
     pub fn clear_bit(self) -> &'a mut W {
         self.bit(false)
     }
-    #[doc = r" Writes raw bits to the field"]
-    #[inline]
+    #[doc = r"Writes raw bits to the field"]
+    #[inline(always)]
     pub fn bit(self, value: bool) -> &'a mut W {
-        const MASK: bool = true;
-        const OFFSET: u8 = 31;
-        self.w.bits &= !((MASK as u32) << OFFSET);
-        self.w.bits |= ((value & MASK) as u32) << OFFSET;
+        self.w.bits = (self.w.bits & !(0x01 << 31)) | ((value as u32 & 0x01) << 31);
         self.w
     }
 }
 impl R {
-    #[doc = r" Value of the register as raw bits"]
-    #[inline]
-    pub fn bits(&self) -> u32 {
-        self.bits
-    }
     #[doc = "Bits 0:5 - PLL reference divider value minus one"]
-    #[inline]
-    pub fn divr(&self) -> DIVRR {
-        let bits = {
-            const MASK: u8 = 63;
-            const OFFSET: u8 = 0;
-            ((self.bits >> OFFSET) & MASK as u32) as u8
-        };
-        DIVRR { bits }
+    #[inline(always)]
+    pub fn divr(&self) -> DIVR_R {
+        DIVR_R::new((self.bits & 0x3f) as u8)
     }
     #[doc = "Bits 6:14 - PLL feedback divider value minus one"]
-    #[inline]
-    pub fn divf(&self) -> DIVFR {
-        let bits = {
-            const MASK: u16 = 511;
-            const OFFSET: u8 = 6;
-            ((self.bits >> OFFSET) & MASK as u32) as u16
-        };
-        DIVFR { bits }
+    #[inline(always)]
+    pub fn divf(&self) -> DIVF_R {
+        DIVF_R::new(((self.bits >> 6) & 0x01ff) as u16)
     }
     #[doc = "Bits 15:17 - Log2 of PLL output divider. Valid settings are 1,2,3,4,5,6"]
-    #[inline]
-    pub fn divq(&self) -> DIVQR {
-        let bits = {
-            const MASK: u8 = 7;
-            const OFFSET: u8 = 15;
-            ((self.bits >> OFFSET) & MASK as u32) as u8
-        };
-        DIVQR { bits }
+    #[inline(always)]
+    pub fn divq(&self) -> DIVQ_R {
+        DIVQ_R::new(((self.bits >> 15) & 0x07) as u8)
     }
     #[doc = "Bits 18:20 - PLL filter range. 3'b100 = 33MHz"]
-    #[inline]
-    pub fn range(&self) -> RANGER {
-        let bits = {
-            const MASK: u8 = 7;
-            const OFFSET: u8 = 18;
-            ((self.bits >> OFFSET) & MASK as u32) as u8
-        };
-        RANGER { bits }
+    #[inline(always)]
+    pub fn range(&self) -> RANGE_R {
+        RANGE_R::new(((self.bits >> 18) & 0x07) as u8)
     }
     #[doc = "Bit 24 - PLL bypass"]
-    #[inline]
-    pub fn bypass(&self) -> BYPASSR {
-        let bits = {
-            const MASK: bool = true;
-            const OFFSET: u8 = 24;
-            ((self.bits >> OFFSET) & MASK as u32) != 0
-        };
-        BYPASSR { bits }
+    #[inline(always)]
+    pub fn bypass(&self) -> BYPASS_R {
+        BYPASS_R::new(((self.bits >> 24) & 0x01) != 0)
     }
     #[doc = "Bit 25 - Internal or external input path. Valid settings is 1, internal feedback."]
-    #[inline]
-    pub fn fse(&self) -> FSER {
-        let bits = {
-            const MASK: bool = true;
-            const OFFSET: u8 = 25;
-            ((self.bits >> OFFSET) & MASK as u32) != 0
-        };
-        FSER { bits }
+    #[inline(always)]
+    pub fn fse(&self) -> FSE_R {
+        FSE_R::new(((self.bits >> 25) & 0x01) != 0)
     }
     #[doc = "Bit 31 - PLL locked"]
-    #[inline]
-    pub fn lock(&self) -> LOCKR {
-        let bits = {
-            const MASK: bool = true;
-            const OFFSET: u8 = 31;
-            ((self.bits >> OFFSET) & MASK as u32) != 0
-        };
-        LOCKR { bits }
+    #[inline(always)]
+    pub fn lock(&self) -> LOCK_R {
+        LOCK_R::new(((self.bits >> 31) & 0x01) != 0)
     }
 }
 impl W {
-    #[doc = r" Reset value of the register"]
-    #[inline]
-    pub fn reset_value() -> W {
-        W { bits: 33654721 }
-    }
-    #[doc = r" Writes raw bits to the register"]
-    #[inline]
-    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
-        self.bits = bits;
-        self
-    }
     #[doc = "Bits 0:5 - PLL reference divider value minus one"]
-    #[inline]
-    pub fn divr(&mut self) -> _DIVRW {
-        _DIVRW { w: self }
+    #[inline(always)]
+    pub fn divr(&mut self) -> DIVR_W {
+        DIVR_W { w: self }
     }
     #[doc = "Bits 6:14 - PLL feedback divider value minus one"]
-    #[inline]
-    pub fn divf(&mut self) -> _DIVFW {
-        _DIVFW { w: self }
+    #[inline(always)]
+    pub fn divf(&mut self) -> DIVF_W {
+        DIVF_W { w: self }
     }
     #[doc = "Bits 15:17 - Log2 of PLL output divider. Valid settings are 1,2,3,4,5,6"]
-    #[inline]
-    pub fn divq(&mut self) -> _DIVQW {
-        _DIVQW { w: self }
+    #[inline(always)]
+    pub fn divq(&mut self) -> DIVQ_W {
+        DIVQ_W { w: self }
     }
     #[doc = "Bits 18:20 - PLL filter range. 3'b100 = 33MHz"]
-    #[inline]
-    pub fn range(&mut self) -> _RANGEW {
-        _RANGEW { w: self }
+    #[inline(always)]
+    pub fn range(&mut self) -> RANGE_W {
+        RANGE_W { w: self }
     }
     #[doc = "Bit 24 - PLL bypass"]
-    #[inline]
-    pub fn bypass(&mut self) -> _BYPASSW {
-        _BYPASSW { w: self }
+    #[inline(always)]
+    pub fn bypass(&mut self) -> BYPASS_W {
+        BYPASS_W { w: self }
     }
     #[doc = "Bit 25 - Internal or external input path. Valid settings is 1, internal feedback."]
-    #[inline]
-    pub fn fse(&mut self) -> _FSEW {
-        _FSEW { w: self }
+    #[inline(always)]
+    pub fn fse(&mut self) -> FSE_W {
+        FSE_W { w: self }
     }
     #[doc = "Bit 31 - PLL locked"]
-    #[inline]
-    pub fn lock(&mut self) -> _LOCKW {
-        _LOCKW { w: self }
+    #[inline(always)]
+    pub fn lock(&mut self) -> LOCK_W {
+        LOCK_W { w: self }
+    }
+    #[doc = "Writes raw bits to the register."]
+    #[inline(always)]
+    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
+        self.0.bits(bits);
+        self
+    }
+}
+#[doc = "DDR PLL Configuration Register\n\nThis register you can [`read`](crate::generic::Reg::read), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [ddrpllcfg0](index.html) module"]
+pub struct DDRPLLCFG0_SPEC;
+impl crate::RegisterSpec for DDRPLLCFG0_SPEC {
+    type Ux = u32;
+}
+#[doc = "`read()` method returns [ddrpllcfg0::R](R) reader structure"]
+impl crate::Readable for DDRPLLCFG0_SPEC {
+    type Reader = R;
+}
+#[doc = "`write(|w| ..)` method takes [ddrpllcfg0::W](W) writer structure"]
+impl crate::Writable for DDRPLLCFG0_SPEC {
+    type Writer = W;
+}
+#[doc = "`reset()` method sets ddrpllcfg0 to value 0x0201_87c1"]
+impl crate::Resettable for DDRPLLCFG0_SPEC {
+    #[inline(always)]
+    fn reset_value() -> Self::Ux {
+        0x0201_87c1
     }
 }

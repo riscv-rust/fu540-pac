@@ -1,164 +1,148 @@
-#[doc = r" Value read from the register"]
-pub struct R {
-    bits: u32,
-}
-#[doc = r" Value to write to the register"]
-pub struct W {
-    bits: u32,
-}
-impl super::RXCTRL {
-    #[doc = r" Modifies the contents of the register"]
-    #[inline]
-    pub fn modify<F>(&self, f: F)
-    where
-        for<'w> F: FnOnce(&R, &'w mut W) -> &'w mut W,
-    {
-        let bits = self.register.get();
-        let r = R { bits: bits };
-        let mut w = W { bits: bits };
-        f(&r, &mut w);
-        self.register.set(w.bits);
-    }
-    #[doc = r" Reads the contents of the register"]
-    #[inline]
-    pub fn read(&self) -> R {
-        R {
-            bits: self.register.get(),
-        }
-    }
-    #[doc = r" Writes to the register"]
-    #[inline]
-    pub fn write<F>(&self, f: F)
-    where
-        F: FnOnce(&mut W) -> &mut W,
-    {
-        let mut w = W::reset_value();
-        f(&mut w);
-        self.register.set(w.bits);
-    }
-    #[doc = r" Writes the reset value to the register"]
-    #[inline]
-    pub fn reset(&self) {
-        self.write(|w| w)
+#[doc = "Register `rxctrl` reader"]
+pub struct R(crate::R<RXCTRL_SPEC>);
+impl core::ops::Deref for R {
+    type Target = crate::R<RXCTRL_SPEC>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
     }
 }
-#[doc = r" Value of the field"]
-pub struct RXENR {
-    bits: bool,
-}
-impl RXENR {
-    #[doc = r" Value of the field as raw bits"]
-    #[inline]
-    pub fn bit(&self) -> bool {
-        self.bits
-    }
-    #[doc = r" Returns `true` if the bit is clear (0)"]
-    #[inline]
-    pub fn bit_is_clear(&self) -> bool {
-        !self.bit()
-    }
-    #[doc = r" Returns `true` if the bit is set (1)"]
-    #[inline]
-    pub fn bit_is_set(&self) -> bool {
-        self.bit()
+impl From<crate::R<RXCTRL_SPEC>> for R {
+    #[inline(always)]
+    fn from(reader: crate::R<RXCTRL_SPEC>) -> Self {
+        R(reader)
     }
 }
-#[doc = r" Value of the field"]
-pub struct RXCNTR {
-    bits: u8,
-}
-impl RXCNTR {
-    #[doc = r" Value of the field as raw bits"]
-    #[inline]
-    pub fn bits(&self) -> u8 {
-        self.bits
+#[doc = "Register `rxctrl` writer"]
+pub struct W(crate::W<RXCTRL_SPEC>);
+impl core::ops::Deref for W {
+    type Target = crate::W<RXCTRL_SPEC>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
     }
 }
-#[doc = r" Proxy"]
-pub struct _RXENW<'a> {
+impl core::ops::DerefMut for W {
+    #[inline(always)]
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.0
+    }
+}
+impl From<crate::W<RXCTRL_SPEC>> for W {
+    #[inline(always)]
+    fn from(writer: crate::W<RXCTRL_SPEC>) -> Self {
+        W(writer)
+    }
+}
+#[doc = "Field `rxen` reader - Receive enable"]
+pub struct RXEN_R(crate::FieldReader<bool, bool>);
+impl RXEN_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        RXEN_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for RXEN_R {
+    type Target = crate::FieldReader<bool, bool>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `rxen` writer - Receive enable"]
+pub struct RXEN_W<'a> {
     w: &'a mut W,
 }
-impl<'a> _RXENW<'a> {
-    #[doc = r" Sets the field bit"]
+impl<'a> RXEN_W<'a> {
+    #[doc = r"Sets the field bit"]
+    #[inline(always)]
     pub fn set_bit(self) -> &'a mut W {
         self.bit(true)
     }
-    #[doc = r" Clears the field bit"]
+    #[doc = r"Clears the field bit"]
+    #[inline(always)]
     pub fn clear_bit(self) -> &'a mut W {
         self.bit(false)
     }
-    #[doc = r" Writes raw bits to the field"]
-    #[inline]
+    #[doc = r"Writes raw bits to the field"]
+    #[inline(always)]
     pub fn bit(self, value: bool) -> &'a mut W {
-        const MASK: bool = true;
-        const OFFSET: u8 = 0;
-        self.w.bits &= !((MASK as u32) << OFFSET);
-        self.w.bits |= ((value & MASK) as u32) << OFFSET;
+        self.w.bits = (self.w.bits & !0x01) | (value as u32 & 0x01);
         self.w
     }
 }
-#[doc = r" Proxy"]
-pub struct _RXCNTW<'a> {
+#[doc = "Field `rxcnt` reader - Receive watermark level"]
+pub struct RXCNT_R(crate::FieldReader<u8, u8>);
+impl RXCNT_R {
+    pub(crate) fn new(bits: u8) -> Self {
+        RXCNT_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for RXCNT_R {
+    type Target = crate::FieldReader<u8, u8>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `rxcnt` writer - Receive watermark level"]
+pub struct RXCNT_W<'a> {
     w: &'a mut W,
 }
-impl<'a> _RXCNTW<'a> {
-    #[doc = r" Writes raw bits to the field"]
-    #[inline]
+impl<'a> RXCNT_W<'a> {
+    #[doc = r"Writes raw bits to the field"]
+    #[inline(always)]
     pub unsafe fn bits(self, value: u8) -> &'a mut W {
-        const MASK: u8 = 7;
-        const OFFSET: u8 = 16;
-        self.w.bits &= !((MASK as u32) << OFFSET);
-        self.w.bits |= ((value & MASK) as u32) << OFFSET;
+        self.w.bits = (self.w.bits & !(0x07 << 16)) | ((value as u32 & 0x07) << 16);
         self.w
     }
 }
 impl R {
-    #[doc = r" Value of the register as raw bits"]
-    #[inline]
-    pub fn bits(&self) -> u32 {
-        self.bits
-    }
     #[doc = "Bit 0 - Receive enable"]
-    #[inline]
-    pub fn rxen(&self) -> RXENR {
-        let bits = {
-            const MASK: bool = true;
-            const OFFSET: u8 = 0;
-            ((self.bits >> OFFSET) & MASK as u32) != 0
-        };
-        RXENR { bits }
+    #[inline(always)]
+    pub fn rxen(&self) -> RXEN_R {
+        RXEN_R::new((self.bits & 0x01) != 0)
     }
     #[doc = "Bits 16:18 - Receive watermark level"]
-    #[inline]
-    pub fn rxcnt(&self) -> RXCNTR {
-        let bits = {
-            const MASK: u8 = 7;
-            const OFFSET: u8 = 16;
-            ((self.bits >> OFFSET) & MASK as u32) as u8
-        };
-        RXCNTR { bits }
+    #[inline(always)]
+    pub fn rxcnt(&self) -> RXCNT_R {
+        RXCNT_R::new(((self.bits >> 16) & 0x07) as u8)
     }
 }
 impl W {
-    #[doc = r" Reset value of the register"]
-    #[inline]
-    pub fn reset_value() -> W {
-        W { bits: 0 }
-    }
-    #[doc = r" Writes raw bits to the register"]
-    #[inline]
-    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
-        self.bits = bits;
-        self
-    }
     #[doc = "Bit 0 - Receive enable"]
-    #[inline]
-    pub fn rxen(&mut self) -> _RXENW {
-        _RXENW { w: self }
+    #[inline(always)]
+    pub fn rxen(&mut self) -> RXEN_W {
+        RXEN_W { w: self }
     }
     #[doc = "Bits 16:18 - Receive watermark level"]
-    #[inline]
-    pub fn rxcnt(&mut self) -> _RXCNTW {
-        _RXCNTW { w: self }
+    #[inline(always)]
+    pub fn rxcnt(&mut self) -> RXCNT_W {
+        RXCNT_W { w: self }
+    }
+    #[doc = "Writes raw bits to the register."]
+    #[inline(always)]
+    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
+        self.0.bits(bits);
+        self
+    }
+}
+#[doc = "Receive Control Register\n\nThis register you can [`read`](crate::generic::Reg::read), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [rxctrl](index.html) module"]
+pub struct RXCTRL_SPEC;
+impl crate::RegisterSpec for RXCTRL_SPEC {
+    type Ux = u32;
+}
+#[doc = "`read()` method returns [rxctrl::R](R) reader structure"]
+impl crate::Readable for RXCTRL_SPEC {
+    type Reader = R;
+}
+#[doc = "`write(|w| ..)` method takes [rxctrl::W](W) writer structure"]
+impl crate::Writable for RXCTRL_SPEC {
+    type Writer = W;
+}
+#[doc = "`reset()` method sets rxctrl to value 0"]
+impl crate::Resettable for RXCTRL_SPEC {
+    #[inline(always)]
+    fn reset_value() -> Self::Ux {
+        0
     }
 }

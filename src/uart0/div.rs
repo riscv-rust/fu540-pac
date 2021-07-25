@@ -1,105 +1,102 @@
-#[doc = r" Value read from the register"]
-pub struct R {
-    bits: u32,
-}
-#[doc = r" Value to write to the register"]
-pub struct W {
-    bits: u32,
-}
-impl super::DIV {
-    #[doc = r" Modifies the contents of the register"]
-    #[inline]
-    pub fn modify<F>(&self, f: F)
-    where
-        for<'w> F: FnOnce(&R, &'w mut W) -> &'w mut W,
-    {
-        let bits = self.register.get();
-        let r = R { bits: bits };
-        let mut w = W { bits: bits };
-        f(&r, &mut w);
-        self.register.set(w.bits);
-    }
-    #[doc = r" Reads the contents of the register"]
-    #[inline]
-    pub fn read(&self) -> R {
-        R {
-            bits: self.register.get(),
-        }
-    }
-    #[doc = r" Writes to the register"]
-    #[inline]
-    pub fn write<F>(&self, f: F)
-    where
-        F: FnOnce(&mut W) -> &mut W,
-    {
-        let mut w = W::reset_value();
-        f(&mut w);
-        self.register.set(w.bits);
-    }
-    #[doc = r" Writes the reset value to the register"]
-    #[inline]
-    pub fn reset(&self) {
-        self.write(|w| w)
+#[doc = "Register `div` reader"]
+pub struct R(crate::R<DIV_SPEC>);
+impl core::ops::Deref for R {
+    type Target = crate::R<DIV_SPEC>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
     }
 }
-#[doc = r" Value of the field"]
-pub struct DIVR {
-    bits: u32,
-}
-impl DIVR {
-    #[doc = r" Value of the field as raw bits"]
-    #[inline]
-    pub fn bits(&self) -> u32 {
-        self.bits
+impl From<crate::R<DIV_SPEC>> for R {
+    #[inline(always)]
+    fn from(reader: crate::R<DIV_SPEC>) -> Self {
+        R(reader)
     }
 }
-#[doc = r" Proxy"]
-pub struct _DIVW<'a> {
+#[doc = "Register `div` writer"]
+pub struct W(crate::W<DIV_SPEC>);
+impl core::ops::Deref for W {
+    type Target = crate::W<DIV_SPEC>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+impl core::ops::DerefMut for W {
+    #[inline(always)]
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.0
+    }
+}
+impl From<crate::W<DIV_SPEC>> for W {
+    #[inline(always)]
+    fn from(writer: crate::W<DIV_SPEC>) -> Self {
+        W(writer)
+    }
+}
+#[doc = "Field `div` reader - Baud rate divisor"]
+pub struct DIV_R(crate::FieldReader<u32, u32>);
+impl DIV_R {
+    pub(crate) fn new(bits: u32) -> Self {
+        DIV_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for DIV_R {
+    type Target = crate::FieldReader<u32, u32>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `div` writer - Baud rate divisor"]
+pub struct DIV_W<'a> {
     w: &'a mut W,
 }
-impl<'a> _DIVW<'a> {
-    #[doc = r" Writes raw bits to the field"]
-    #[inline]
+impl<'a> DIV_W<'a> {
+    #[doc = r"Writes raw bits to the field"]
+    #[inline(always)]
     pub unsafe fn bits(self, value: u32) -> &'a mut W {
-        const MASK: u32 = 1048575;
-        const OFFSET: u8 = 0;
-        self.w.bits &= !((MASK as u32) << OFFSET);
-        self.w.bits |= ((value & MASK) as u32) << OFFSET;
+        self.w.bits = (self.w.bits & !0x000f_ffff) | (value as u32 & 0x000f_ffff);
         self.w
     }
 }
 impl R {
-    #[doc = r" Value of the register as raw bits"]
-    #[inline]
-    pub fn bits(&self) -> u32 {
-        self.bits
-    }
     #[doc = "Bits 0:19 - Baud rate divisor"]
-    #[inline]
-    pub fn div(&self) -> DIVR {
-        let bits = {
-            const MASK: u32 = 1048575;
-            const OFFSET: u8 = 0;
-            ((self.bits >> OFFSET) & MASK as u32) as u32
-        };
-        DIVR { bits }
+    #[inline(always)]
+    pub fn div(&self) -> DIV_R {
+        DIV_R::new((self.bits & 0x000f_ffff) as u32)
     }
 }
 impl W {
-    #[doc = r" Reset value of the register"]
-    #[inline]
-    pub fn reset_value() -> W {
-        W { bits: 289 }
+    #[doc = "Bits 0:19 - Baud rate divisor"]
+    #[inline(always)]
+    pub fn div(&mut self) -> DIV_W {
+        DIV_W { w: self }
     }
-    #[doc = r" Writes raw bits to the register"]
-    #[inline]
+    #[doc = "Writes raw bits to the register."]
+    #[inline(always)]
     pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
-        self.bits = bits;
+        self.0.bits(bits);
         self
     }
-    #[doc = "Bits 0:19 - Baud rate divisor"]
-    #[inline]
-    pub fn div(&mut self) -> _DIVW {
-        _DIVW { w: self }
+}
+#[doc = "Baud Rate Divisor Register\n\nThis register you can [`read`](crate::generic::Reg::read), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [div](index.html) module"]
+pub struct DIV_SPEC;
+impl crate::RegisterSpec for DIV_SPEC {
+    type Ux = u32;
+}
+#[doc = "`read()` method returns [div::R](R) reader structure"]
+impl crate::Readable for DIV_SPEC {
+    type Reader = R;
+}
+#[doc = "`write(|w| ..)` method takes [div::W](W) writer structure"]
+impl crate::Writable for DIV_SPEC {
+    type Writer = W;
+}
+#[doc = "`reset()` method sets div to value 0x0121"]
+impl crate::Resettable for DIV_SPEC {
+    #[inline(always)]
+    fn reset_value() -> Self::Ux {
+        0x0121
     }
 }

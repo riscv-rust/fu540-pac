@@ -1,164 +1,148 @@
-#[doc = r" Value read from the register"]
-pub struct R {
-    bits: u32,
-}
-#[doc = r" Value to write to the register"]
-pub struct W {
-    bits: u32,
-}
-impl super::TXDATA {
-    #[doc = r" Modifies the contents of the register"]
-    #[inline]
-    pub fn modify<F>(&self, f: F)
-    where
-        for<'w> F: FnOnce(&R, &'w mut W) -> &'w mut W,
-    {
-        let bits = self.register.get();
-        let r = R { bits: bits };
-        let mut w = W { bits: bits };
-        f(&r, &mut w);
-        self.register.set(w.bits);
-    }
-    #[doc = r" Reads the contents of the register"]
-    #[inline]
-    pub fn read(&self) -> R {
-        R {
-            bits: self.register.get(),
-        }
-    }
-    #[doc = r" Writes to the register"]
-    #[inline]
-    pub fn write<F>(&self, f: F)
-    where
-        F: FnOnce(&mut W) -> &mut W,
-    {
-        let mut w = W::reset_value();
-        f(&mut w);
-        self.register.set(w.bits);
-    }
-    #[doc = r" Writes the reset value to the register"]
-    #[inline]
-    pub fn reset(&self) {
-        self.write(|w| w)
+#[doc = "Register `txdata` reader"]
+pub struct R(crate::R<TXDATA_SPEC>);
+impl core::ops::Deref for R {
+    type Target = crate::R<TXDATA_SPEC>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
     }
 }
-#[doc = r" Value of the field"]
-pub struct DATAR {
-    bits: u8,
-}
-impl DATAR {
-    #[doc = r" Value of the field as raw bits"]
-    #[inline]
-    pub fn bits(&self) -> u8 {
-        self.bits
+impl From<crate::R<TXDATA_SPEC>> for R {
+    #[inline(always)]
+    fn from(reader: crate::R<TXDATA_SPEC>) -> Self {
+        R(reader)
     }
 }
-#[doc = r" Value of the field"]
-pub struct FULLR {
-    bits: bool,
-}
-impl FULLR {
-    #[doc = r" Value of the field as raw bits"]
-    #[inline]
-    pub fn bit(&self) -> bool {
-        self.bits
-    }
-    #[doc = r" Returns `true` if the bit is clear (0)"]
-    #[inline]
-    pub fn bit_is_clear(&self) -> bool {
-        !self.bit()
-    }
-    #[doc = r" Returns `true` if the bit is set (1)"]
-    #[inline]
-    pub fn bit_is_set(&self) -> bool {
-        self.bit()
+#[doc = "Register `txdata` writer"]
+pub struct W(crate::W<TXDATA_SPEC>);
+impl core::ops::Deref for W {
+    type Target = crate::W<TXDATA_SPEC>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
     }
 }
-#[doc = r" Proxy"]
-pub struct _DATAW<'a> {
+impl core::ops::DerefMut for W {
+    #[inline(always)]
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.0
+    }
+}
+impl From<crate::W<TXDATA_SPEC>> for W {
+    #[inline(always)]
+    fn from(writer: crate::W<TXDATA_SPEC>) -> Self {
+        W(writer)
+    }
+}
+#[doc = "Field `data` reader - Transmit data"]
+pub struct DATA_R(crate::FieldReader<u8, u8>);
+impl DATA_R {
+    pub(crate) fn new(bits: u8) -> Self {
+        DATA_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for DATA_R {
+    type Target = crate::FieldReader<u8, u8>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `data` writer - Transmit data"]
+pub struct DATA_W<'a> {
     w: &'a mut W,
 }
-impl<'a> _DATAW<'a> {
-    #[doc = r" Writes raw bits to the field"]
-    #[inline]
+impl<'a> DATA_W<'a> {
+    #[doc = r"Writes raw bits to the field"]
+    #[inline(always)]
     pub unsafe fn bits(self, value: u8) -> &'a mut W {
-        const MASK: u8 = 255;
-        const OFFSET: u8 = 0;
-        self.w.bits &= !((MASK as u32) << OFFSET);
-        self.w.bits |= ((value & MASK) as u32) << OFFSET;
+        self.w.bits = (self.w.bits & !0xff) | (value as u32 & 0xff);
         self.w
     }
 }
-#[doc = r" Proxy"]
-pub struct _FULLW<'a> {
+#[doc = "Field `full` reader - Transmit FIFO full"]
+pub struct FULL_R(crate::FieldReader<bool, bool>);
+impl FULL_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        FULL_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for FULL_R {
+    type Target = crate::FieldReader<bool, bool>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `full` writer - Transmit FIFO full"]
+pub struct FULL_W<'a> {
     w: &'a mut W,
 }
-impl<'a> _FULLW<'a> {
-    #[doc = r" Sets the field bit"]
+impl<'a> FULL_W<'a> {
+    #[doc = r"Sets the field bit"]
+    #[inline(always)]
     pub fn set_bit(self) -> &'a mut W {
         self.bit(true)
     }
-    #[doc = r" Clears the field bit"]
+    #[doc = r"Clears the field bit"]
+    #[inline(always)]
     pub fn clear_bit(self) -> &'a mut W {
         self.bit(false)
     }
-    #[doc = r" Writes raw bits to the field"]
-    #[inline]
+    #[doc = r"Writes raw bits to the field"]
+    #[inline(always)]
     pub fn bit(self, value: bool) -> &'a mut W {
-        const MASK: bool = true;
-        const OFFSET: u8 = 31;
-        self.w.bits &= !((MASK as u32) << OFFSET);
-        self.w.bits |= ((value & MASK) as u32) << OFFSET;
+        self.w.bits = (self.w.bits & !(0x01 << 31)) | ((value as u32 & 0x01) << 31);
         self.w
     }
 }
 impl R {
-    #[doc = r" Value of the register as raw bits"]
-    #[inline]
-    pub fn bits(&self) -> u32 {
-        self.bits
-    }
     #[doc = "Bits 0:7 - Transmit data"]
-    #[inline]
-    pub fn data(&self) -> DATAR {
-        let bits = {
-            const MASK: u8 = 255;
-            const OFFSET: u8 = 0;
-            ((self.bits >> OFFSET) & MASK as u32) as u8
-        };
-        DATAR { bits }
+    #[inline(always)]
+    pub fn data(&self) -> DATA_R {
+        DATA_R::new((self.bits & 0xff) as u8)
     }
     #[doc = "Bit 31 - Transmit FIFO full"]
-    #[inline]
-    pub fn full(&self) -> FULLR {
-        let bits = {
-            const MASK: bool = true;
-            const OFFSET: u8 = 31;
-            ((self.bits >> OFFSET) & MASK as u32) != 0
-        };
-        FULLR { bits }
+    #[inline(always)]
+    pub fn full(&self) -> FULL_R {
+        FULL_R::new(((self.bits >> 31) & 0x01) != 0)
     }
 }
 impl W {
-    #[doc = r" Reset value of the register"]
-    #[inline]
-    pub fn reset_value() -> W {
-        W { bits: 0 }
-    }
-    #[doc = r" Writes raw bits to the register"]
-    #[inline]
-    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
-        self.bits = bits;
-        self
-    }
     #[doc = "Bits 0:7 - Transmit data"]
-    #[inline]
-    pub fn data(&mut self) -> _DATAW {
-        _DATAW { w: self }
+    #[inline(always)]
+    pub fn data(&mut self) -> DATA_W {
+        DATA_W { w: self }
     }
     #[doc = "Bit 31 - Transmit FIFO full"]
-    #[inline]
-    pub fn full(&mut self) -> _FULLW {
-        _FULLW { w: self }
+    #[inline(always)]
+    pub fn full(&mut self) -> FULL_W {
+        FULL_W { w: self }
+    }
+    #[doc = "Writes raw bits to the register."]
+    #[inline(always)]
+    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
+        self.0.bits(bits);
+        self
+    }
+}
+#[doc = "Transmit Data Register\n\nThis register you can [`read`](crate::generic::Reg::read), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [txdata](index.html) module"]
+pub struct TXDATA_SPEC;
+impl crate::RegisterSpec for TXDATA_SPEC {
+    type Ux = u32;
+}
+#[doc = "`read()` method returns [txdata::R](R) reader structure"]
+impl crate::Readable for TXDATA_SPEC {
+    type Reader = R;
+}
+#[doc = "`write(|w| ..)` method takes [txdata::W](W) writer structure"]
+impl crate::Writable for TXDATA_SPEC {
+    type Writer = W;
+}
+#[doc = "`reset()` method sets txdata to value 0"]
+impl crate::Resettable for TXDATA_SPEC {
+    #[inline(always)]
+    fn reset_value() -> Self::Ux {
+        0
     }
 }
