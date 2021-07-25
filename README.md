@@ -1,6 +1,6 @@
 [![crates.io](https://img.shields.io/crates/d/fu540-pac.svg)](https://crates.io/crates/fu540-pac)
 [![crates.io](https://img.shields.io/crates/v/fu540-pac.svg)](https://crates.io/crates/fu540-pac)
-[![Build Status](https://travis-ci.org/riscv-rust/fu540-pac.svg?branch=master)](https://travis-ci.org/riscv-rust/fu540-pac)
+![Build Status](https://github.com/riscv-rust/fu540-pac/workflows/Continuous%20integration/badge.svg)
 
 # `fu540-pac`
 
