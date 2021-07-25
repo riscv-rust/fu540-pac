@@ -1,182 +1,158 @@
-#[doc = r" Value read from the register"]
-pub struct R {
-    bits: u32,
-}
-#[doc = r" Value to write to the register"]
-pub struct W {
-    bits: u32,
-}
-impl super::IE {
-    #[doc = r" Modifies the contents of the register"]
-    #[inline]
-    pub fn modify<F>(&self, f: F)
-    where
-        for<'w> F: FnOnce(&R, &'w mut W) -> &'w mut W,
-    {
-        let bits = self.register.get();
-        let r = R { bits: bits };
-        let mut w = W { bits: bits };
-        f(&r, &mut w);
-        self.register.set(w.bits);
-    }
-    #[doc = r" Reads the contents of the register"]
-    #[inline]
-    pub fn read(&self) -> R {
-        R {
-            bits: self.register.get(),
-        }
-    }
-    #[doc = r" Writes to the register"]
-    #[inline]
-    pub fn write<F>(&self, f: F)
-    where
-        F: FnOnce(&mut W) -> &mut W,
-    {
-        let mut w = W::reset_value();
-        f(&mut w);
-        self.register.set(w.bits);
-    }
-    #[doc = r" Writes the reset value to the register"]
-    #[inline]
-    pub fn reset(&self) {
-        self.write(|w| w)
+#[doc = "Register `ie` reader"]
+pub struct R(crate::R<IE_SPEC>);
+impl core::ops::Deref for R {
+    type Target = crate::R<IE_SPEC>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
     }
 }
-#[doc = r" Value of the field"]
-pub struct TXWMR {
-    bits: bool,
-}
-impl TXWMR {
-    #[doc = r" Value of the field as raw bits"]
-    #[inline]
-    pub fn bit(&self) -> bool {
-        self.bits
-    }
-    #[doc = r" Returns `true` if the bit is clear (0)"]
-    #[inline]
-    pub fn bit_is_clear(&self) -> bool {
-        !self.bit()
-    }
-    #[doc = r" Returns `true` if the bit is set (1)"]
-    #[inline]
-    pub fn bit_is_set(&self) -> bool {
-        self.bit()
+impl From<crate::R<IE_SPEC>> for R {
+    #[inline(always)]
+    fn from(reader: crate::R<IE_SPEC>) -> Self {
+        R(reader)
     }
 }
-#[doc = r" Value of the field"]
-pub struct RXWMR {
-    bits: bool,
-}
-impl RXWMR {
-    #[doc = r" Value of the field as raw bits"]
-    #[inline]
-    pub fn bit(&self) -> bool {
-        self.bits
-    }
-    #[doc = r" Returns `true` if the bit is clear (0)"]
-    #[inline]
-    pub fn bit_is_clear(&self) -> bool {
-        !self.bit()
-    }
-    #[doc = r" Returns `true` if the bit is set (1)"]
-    #[inline]
-    pub fn bit_is_set(&self) -> bool {
-        self.bit()
+#[doc = "Register `ie` writer"]
+pub struct W(crate::W<IE_SPEC>);
+impl core::ops::Deref for W {
+    type Target = crate::W<IE_SPEC>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
     }
 }
-#[doc = r" Proxy"]
-pub struct _TXWMW<'a> {
+impl core::ops::DerefMut for W {
+    #[inline(always)]
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.0
+    }
+}
+impl From<crate::W<IE_SPEC>> for W {
+    #[inline(always)]
+    fn from(writer: crate::W<IE_SPEC>) -> Self {
+        W(writer)
+    }
+}
+#[doc = "Field `txwm` reader - Transmit watermark interrupt enable"]
+pub struct TXWM_R(crate::FieldReader<bool, bool>);
+impl TXWM_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        TXWM_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for TXWM_R {
+    type Target = crate::FieldReader<bool, bool>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `txwm` writer - Transmit watermark interrupt enable"]
+pub struct TXWM_W<'a> {
     w: &'a mut W,
 }
-impl<'a> _TXWMW<'a> {
-    #[doc = r" Sets the field bit"]
+impl<'a> TXWM_W<'a> {
+    #[doc = r"Sets the field bit"]
+    #[inline(always)]
     pub fn set_bit(self) -> &'a mut W {
         self.bit(true)
     }
-    #[doc = r" Clears the field bit"]
+    #[doc = r"Clears the field bit"]
+    #[inline(always)]
     pub fn clear_bit(self) -> &'a mut W {
         self.bit(false)
     }
-    #[doc = r" Writes raw bits to the field"]
-    #[inline]
+    #[doc = r"Writes raw bits to the field"]
+    #[inline(always)]
     pub fn bit(self, value: bool) -> &'a mut W {
-        const MASK: bool = true;
-        const OFFSET: u8 = 0;
-        self.w.bits &= !((MASK as u32) << OFFSET);
-        self.w.bits |= ((value & MASK) as u32) << OFFSET;
+        self.w.bits = (self.w.bits & !0x01) | (value as u32 & 0x01);
         self.w
     }
 }
-#[doc = r" Proxy"]
-pub struct _RXWMW<'a> {
+#[doc = "Field `rxwm` reader - Receive watermark interrupt enable"]
+pub struct RXWM_R(crate::FieldReader<bool, bool>);
+impl RXWM_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        RXWM_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for RXWM_R {
+    type Target = crate::FieldReader<bool, bool>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `rxwm` writer - Receive watermark interrupt enable"]
+pub struct RXWM_W<'a> {
     w: &'a mut W,
 }
-impl<'a> _RXWMW<'a> {
-    #[doc = r" Sets the field bit"]
+impl<'a> RXWM_W<'a> {
+    #[doc = r"Sets the field bit"]
+    #[inline(always)]
     pub fn set_bit(self) -> &'a mut W {
         self.bit(true)
     }
-    #[doc = r" Clears the field bit"]
+    #[doc = r"Clears the field bit"]
+    #[inline(always)]
     pub fn clear_bit(self) -> &'a mut W {
         self.bit(false)
     }
-    #[doc = r" Writes raw bits to the field"]
-    #[inline]
+    #[doc = r"Writes raw bits to the field"]
+    #[inline(always)]
     pub fn bit(self, value: bool) -> &'a mut W {
-        const MASK: bool = true;
-        const OFFSET: u8 = 1;
-        self.w.bits &= !((MASK as u32) << OFFSET);
-        self.w.bits |= ((value & MASK) as u32) << OFFSET;
+        self.w.bits = (self.w.bits & !(0x01 << 1)) | ((value as u32 & 0x01) << 1);
         self.w
     }
 }
 impl R {
-    #[doc = r" Value of the register as raw bits"]
-    #[inline]
-    pub fn bits(&self) -> u32 {
-        self.bits
-    }
     #[doc = "Bit 0 - Transmit watermark interrupt enable"]
-    #[inline]
-    pub fn txwm(&self) -> TXWMR {
-        let bits = {
-            const MASK: bool = true;
-            const OFFSET: u8 = 0;
-            ((self.bits >> OFFSET) & MASK as u32) != 0
-        };
-        TXWMR { bits }
+    #[inline(always)]
+    pub fn txwm(&self) -> TXWM_R {
+        TXWM_R::new((self.bits & 0x01) != 0)
     }
     #[doc = "Bit 1 - Receive watermark interrupt enable"]
-    #[inline]
-    pub fn rxwm(&self) -> RXWMR {
-        let bits = {
-            const MASK: bool = true;
-            const OFFSET: u8 = 1;
-            ((self.bits >> OFFSET) & MASK as u32) != 0
-        };
-        RXWMR { bits }
+    #[inline(always)]
+    pub fn rxwm(&self) -> RXWM_R {
+        RXWM_R::new(((self.bits >> 1) & 0x01) != 0)
     }
 }
 impl W {
-    #[doc = r" Reset value of the register"]
-    #[inline]
-    pub fn reset_value() -> W {
-        W { bits: 0 }
-    }
-    #[doc = r" Writes raw bits to the register"]
-    #[inline]
-    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
-        self.bits = bits;
-        self
-    }
     #[doc = "Bit 0 - Transmit watermark interrupt enable"]
-    #[inline]
-    pub fn txwm(&mut self) -> _TXWMW {
-        _TXWMW { w: self }
+    #[inline(always)]
+    pub fn txwm(&mut self) -> TXWM_W {
+        TXWM_W { w: self }
     }
     #[doc = "Bit 1 - Receive watermark interrupt enable"]
-    #[inline]
-    pub fn rxwm(&mut self) -> _RXWMW {
-        _RXWMW { w: self }
+    #[inline(always)]
+    pub fn rxwm(&mut self) -> RXWM_W {
+        RXWM_W { w: self }
+    }
+    #[doc = "Writes raw bits to the register."]
+    #[inline(always)]
+    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
+        self.0.bits(bits);
+        self
+    }
+}
+#[doc = "Interrupt Enable Register\n\nThis register you can [`read`](crate::generic::Reg::read), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [ie](index.html) module"]
+pub struct IE_SPEC;
+impl crate::RegisterSpec for IE_SPEC {
+    type Ux = u32;
+}
+#[doc = "`read()` method returns [ie::R](R) reader structure"]
+impl crate::Readable for IE_SPEC {
+    type Reader = R;
+}
+#[doc = "`write(|w| ..)` method takes [ie::W](W) writer structure"]
+impl crate::Writable for IE_SPEC {
+    type Writer = W;
+}
+#[doc = "`reset()` method sets ie to value 0"]
+impl crate::Resettable for IE_SPEC {
+    #[inline(always)]
+    fn reset_value() -> Self::Ux {
+        0
     }
 }

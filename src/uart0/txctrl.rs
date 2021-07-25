@@ -1,223 +1,194 @@
-#[doc = r" Value read from the register"]
-pub struct R {
-    bits: u32,
-}
-#[doc = r" Value to write to the register"]
-pub struct W {
-    bits: u32,
-}
-impl super::TXCTRL {
-    #[doc = r" Modifies the contents of the register"]
-    #[inline]
-    pub fn modify<F>(&self, f: F)
-    where
-        for<'w> F: FnOnce(&R, &'w mut W) -> &'w mut W,
-    {
-        let bits = self.register.get();
-        let r = R { bits: bits };
-        let mut w = W { bits: bits };
-        f(&r, &mut w);
-        self.register.set(w.bits);
-    }
-    #[doc = r" Reads the contents of the register"]
-    #[inline]
-    pub fn read(&self) -> R {
-        R {
-            bits: self.register.get(),
-        }
-    }
-    #[doc = r" Writes to the register"]
-    #[inline]
-    pub fn write<F>(&self, f: F)
-    where
-        F: FnOnce(&mut W) -> &mut W,
-    {
-        let mut w = W::reset_value();
-        f(&mut w);
-        self.register.set(w.bits);
-    }
-    #[doc = r" Writes the reset value to the register"]
-    #[inline]
-    pub fn reset(&self) {
-        self.write(|w| w)
+#[doc = "Register `txctrl` reader"]
+pub struct R(crate::R<TXCTRL_SPEC>);
+impl core::ops::Deref for R {
+    type Target = crate::R<TXCTRL_SPEC>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
     }
 }
-#[doc = r" Value of the field"]
-pub struct TXENR {
-    bits: bool,
-}
-impl TXENR {
-    #[doc = r" Value of the field as raw bits"]
-    #[inline]
-    pub fn bit(&self) -> bool {
-        self.bits
-    }
-    #[doc = r" Returns `true` if the bit is clear (0)"]
-    #[inline]
-    pub fn bit_is_clear(&self) -> bool {
-        !self.bit()
-    }
-    #[doc = r" Returns `true` if the bit is set (1)"]
-    #[inline]
-    pub fn bit_is_set(&self) -> bool {
-        self.bit()
+impl From<crate::R<TXCTRL_SPEC>> for R {
+    #[inline(always)]
+    fn from(reader: crate::R<TXCTRL_SPEC>) -> Self {
+        R(reader)
     }
 }
-#[doc = r" Value of the field"]
-pub struct NSTOPR {
-    bits: bool,
-}
-impl NSTOPR {
-    #[doc = r" Value of the field as raw bits"]
-    #[inline]
-    pub fn bit(&self) -> bool {
-        self.bits
-    }
-    #[doc = r" Returns `true` if the bit is clear (0)"]
-    #[inline]
-    pub fn bit_is_clear(&self) -> bool {
-        !self.bit()
-    }
-    #[doc = r" Returns `true` if the bit is set (1)"]
-    #[inline]
-    pub fn bit_is_set(&self) -> bool {
-        self.bit()
+#[doc = "Register `txctrl` writer"]
+pub struct W(crate::W<TXCTRL_SPEC>);
+impl core::ops::Deref for W {
+    type Target = crate::W<TXCTRL_SPEC>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
     }
 }
-#[doc = r" Value of the field"]
-pub struct TXCNTR {
-    bits: u8,
-}
-impl TXCNTR {
-    #[doc = r" Value of the field as raw bits"]
-    #[inline]
-    pub fn bits(&self) -> u8 {
-        self.bits
+impl core::ops::DerefMut for W {
+    #[inline(always)]
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.0
     }
 }
-#[doc = r" Proxy"]
-pub struct _TXENW<'a> {
+impl From<crate::W<TXCTRL_SPEC>> for W {
+    #[inline(always)]
+    fn from(writer: crate::W<TXCTRL_SPEC>) -> Self {
+        W(writer)
+    }
+}
+#[doc = "Field `txen` reader - Transmit enable"]
+pub struct TXEN_R(crate::FieldReader<bool, bool>);
+impl TXEN_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        TXEN_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for TXEN_R {
+    type Target = crate::FieldReader<bool, bool>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `txen` writer - Transmit enable"]
+pub struct TXEN_W<'a> {
     w: &'a mut W,
 }
-impl<'a> _TXENW<'a> {
-    #[doc = r" Sets the field bit"]
+impl<'a> TXEN_W<'a> {
+    #[doc = r"Sets the field bit"]
+    #[inline(always)]
     pub fn set_bit(self) -> &'a mut W {
         self.bit(true)
     }
-    #[doc = r" Clears the field bit"]
+    #[doc = r"Clears the field bit"]
+    #[inline(always)]
     pub fn clear_bit(self) -> &'a mut W {
         self.bit(false)
     }
-    #[doc = r" Writes raw bits to the field"]
-    #[inline]
+    #[doc = r"Writes raw bits to the field"]
+    #[inline(always)]
     pub fn bit(self, value: bool) -> &'a mut W {
-        const MASK: bool = true;
-        const OFFSET: u8 = 0;
-        self.w.bits &= !((MASK as u32) << OFFSET);
-        self.w.bits |= ((value & MASK) as u32) << OFFSET;
+        self.w.bits = (self.w.bits & !0x01) | (value as u32 & 0x01);
         self.w
     }
 }
-#[doc = r" Proxy"]
-pub struct _NSTOPW<'a> {
+#[doc = "Field `nstop` reader - Number of stop bits"]
+pub struct NSTOP_R(crate::FieldReader<bool, bool>);
+impl NSTOP_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        NSTOP_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for NSTOP_R {
+    type Target = crate::FieldReader<bool, bool>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `nstop` writer - Number of stop bits"]
+pub struct NSTOP_W<'a> {
     w: &'a mut W,
 }
-impl<'a> _NSTOPW<'a> {
-    #[doc = r" Sets the field bit"]
+impl<'a> NSTOP_W<'a> {
+    #[doc = r"Sets the field bit"]
+    #[inline(always)]
     pub fn set_bit(self) -> &'a mut W {
         self.bit(true)
     }
-    #[doc = r" Clears the field bit"]
+    #[doc = r"Clears the field bit"]
+    #[inline(always)]
     pub fn clear_bit(self) -> &'a mut W {
         self.bit(false)
     }
-    #[doc = r" Writes raw bits to the field"]
-    #[inline]
+    #[doc = r"Writes raw bits to the field"]
+    #[inline(always)]
     pub fn bit(self, value: bool) -> &'a mut W {
-        const MASK: bool = true;
-        const OFFSET: u8 = 1;
-        self.w.bits &= !((MASK as u32) << OFFSET);
-        self.w.bits |= ((value & MASK) as u32) << OFFSET;
+        self.w.bits = (self.w.bits & !(0x01 << 1)) | ((value as u32 & 0x01) << 1);
         self.w
     }
 }
-#[doc = r" Proxy"]
-pub struct _TXCNTW<'a> {
+#[doc = "Field `txcnt` reader - Transmit watermark level"]
+pub struct TXCNT_R(crate::FieldReader<u8, u8>);
+impl TXCNT_R {
+    pub(crate) fn new(bits: u8) -> Self {
+        TXCNT_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for TXCNT_R {
+    type Target = crate::FieldReader<u8, u8>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `txcnt` writer - Transmit watermark level"]
+pub struct TXCNT_W<'a> {
     w: &'a mut W,
 }
-impl<'a> _TXCNTW<'a> {
-    #[doc = r" Writes raw bits to the field"]
-    #[inline]
+impl<'a> TXCNT_W<'a> {
+    #[doc = r"Writes raw bits to the field"]
+    #[inline(always)]
     pub unsafe fn bits(self, value: u8) -> &'a mut W {
-        const MASK: u8 = 7;
-        const OFFSET: u8 = 16;
-        self.w.bits &= !((MASK as u32) << OFFSET);
-        self.w.bits |= ((value & MASK) as u32) << OFFSET;
+        self.w.bits = (self.w.bits & !(0x07 << 16)) | ((value as u32 & 0x07) << 16);
         self.w
     }
 }
 impl R {
-    #[doc = r" Value of the register as raw bits"]
-    #[inline]
-    pub fn bits(&self) -> u32 {
-        self.bits
-    }
     #[doc = "Bit 0 - Transmit enable"]
-    #[inline]
-    pub fn txen(&self) -> TXENR {
-        let bits = {
-            const MASK: bool = true;
-            const OFFSET: u8 = 0;
-            ((self.bits >> OFFSET) & MASK as u32) != 0
-        };
-        TXENR { bits }
+    #[inline(always)]
+    pub fn txen(&self) -> TXEN_R {
+        TXEN_R::new((self.bits & 0x01) != 0)
     }
     #[doc = "Bit 1 - Number of stop bits"]
-    #[inline]
-    pub fn nstop(&self) -> NSTOPR {
-        let bits = {
-            const MASK: bool = true;
-            const OFFSET: u8 = 1;
-            ((self.bits >> OFFSET) & MASK as u32) != 0
-        };
-        NSTOPR { bits }
+    #[inline(always)]
+    pub fn nstop(&self) -> NSTOP_R {
+        NSTOP_R::new(((self.bits >> 1) & 0x01) != 0)
     }
     #[doc = "Bits 16:18 - Transmit watermark level"]
-    #[inline]
-    pub fn txcnt(&self) -> TXCNTR {
-        let bits = {
-            const MASK: u8 = 7;
-            const OFFSET: u8 = 16;
-            ((self.bits >> OFFSET) & MASK as u32) as u8
-        };
-        TXCNTR { bits }
+    #[inline(always)]
+    pub fn txcnt(&self) -> TXCNT_R {
+        TXCNT_R::new(((self.bits >> 16) & 0x07) as u8)
     }
 }
 impl W {
-    #[doc = r" Reset value of the register"]
-    #[inline]
-    pub fn reset_value() -> W {
-        W { bits: 0 }
-    }
-    #[doc = r" Writes raw bits to the register"]
-    #[inline]
-    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
-        self.bits = bits;
-        self
-    }
     #[doc = "Bit 0 - Transmit enable"]
-    #[inline]
-    pub fn txen(&mut self) -> _TXENW {
-        _TXENW { w: self }
+    #[inline(always)]
+    pub fn txen(&mut self) -> TXEN_W {
+        TXEN_W { w: self }
     }
     #[doc = "Bit 1 - Number of stop bits"]
-    #[inline]
-    pub fn nstop(&mut self) -> _NSTOPW {
-        _NSTOPW { w: self }
+    #[inline(always)]
+    pub fn nstop(&mut self) -> NSTOP_W {
+        NSTOP_W { w: self }
     }
     #[doc = "Bits 16:18 - Transmit watermark level"]
-    #[inline]
-    pub fn txcnt(&mut self) -> _TXCNTW {
-        _TXCNTW { w: self }
+    #[inline(always)]
+    pub fn txcnt(&mut self) -> TXCNT_W {
+        TXCNT_W { w: self }
+    }
+    #[doc = "Writes raw bits to the register."]
+    #[inline(always)]
+    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
+        self.0.bits(bits);
+        self
+    }
+}
+#[doc = "Transmit Control Register\n\nThis register you can [`read`](crate::generic::Reg::read), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [txctrl](index.html) module"]
+pub struct TXCTRL_SPEC;
+impl crate::RegisterSpec for TXCTRL_SPEC {
+    type Ux = u32;
+}
+#[doc = "`read()` method returns [txctrl::R](R) reader structure"]
+impl crate::Readable for TXCTRL_SPEC {
+    type Reader = R;
+}
+#[doc = "`write(|w| ..)` method takes [txctrl::W](W) writer structure"]
+impl crate::Writable for TXCTRL_SPEC {
+    type Writer = W;
+}
+#[doc = "`reset()` method sets txctrl to value 0"]
+impl crate::Resettable for TXCTRL_SPEC {
+    #[inline(always)]
+    fn reset_value() -> Self::Ux {
+        0
     }
 }
